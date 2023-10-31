@@ -14,7 +14,7 @@
                             Edit
                         </x-link-button>
 
-                        <div class="grid sm:grid-cols-2 grid-cols-1 gap-4">
+                        <div class="grid sm:grid-cols-2 grid-cols-1 gap-6 mt-6">
                             <div>
                                 <img class="w-full h-auto rounded-lg" src="{{ asset('storage/' . $myHorse->avatar) }}"
                                     alt="{{ $myHorse->name }}">
@@ -24,13 +24,30 @@
                                     {{ $myHorse->name }}
                                 </h3>
                                 <p class="mt-1">{{ $myHorse->description }}</p>
-                                <p class="mt-6">
-                                    <strong>Gender:</strong> {{ \App\Models\myHorse::$gender[$myHorse->gender] }}<br>
-                                    <strong>Race:</strong> {{ $myHorse->race }}<br>
-                                    <strong>Color:</strong> {{ $myHorse->color }}<br>
-                                    <strong>Height:</strong> {{ $myHorse->height }} cm<br>
-                                    <strong>FEI ID:</strong> {{ $myHorse->fei_id }}
-                                </p>
+                                <table class="table-fixed min-w-full mt-6">
+                                    <tbody>
+                                        <tr class="bg-slate-100">
+                                            <td class="px-6 py-3 font-semibold">Gender:</td>
+                                            <td class="px-6 py-3">{{ \App\Models\myHorse::$gender[$myHorse->gender] }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-3 font-semibold">Race:</td>
+                                            <td class="px-6 py-3">{{ $myHorse->race }}</td>
+                                        </tr>
+                                        <tr class="bg-slate-100">
+                                            <td class="px-6 py-3 font-semibold">Color:</td>
+                                            <td class="px-6 py-3">{{ $myHorse->color }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="px-6 py-3 font-semibold">Height:</td>
+                                            <td class="px-6 py-3">{{ $myHorse->height }} cm</td>
+                                        </tr>
+                                        <tr class="bg-slate-100">
+                                            <td class="px-6 py-3 font-semibold">FEI ID:</td>
+                                            <td class="px-6 py-3">{{ $myHorse->fei_id }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
 

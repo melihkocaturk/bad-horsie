@@ -19,7 +19,10 @@ return new class extends Migration
             $table->string('banner')->nullable()->default('no-image.png');
             $table->string('address');
             $table->string('phone');
+            $table->string('email')->nullable();
+            $table->string('web')->nullable();
             $table->string('coordinates')->nullable();
+            $table->foreignIdFor(\App\Models\User::class)->constrained();
             $table->timestamps();
         });
     }

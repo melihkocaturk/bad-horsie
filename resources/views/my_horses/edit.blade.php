@@ -33,7 +33,7 @@
                             <div>
                                 <x-input-label for="description" :value="__('Description')" />
                                 <x-textarea id="description" name="description" type="text" class="mt-1 block w-full"
-                                    :value="$myHorse->description" maxlength="255" />
+                                    :value="$myHorse->description" maxlength="191" />
                                 <x-input-error class="mt-2" :messages="$errors->get('description')" />
                             </div>
 
@@ -48,7 +48,7 @@
                             <div>
                                 <x-input-label for="gender" :value="__('Gender')" />
                                 <x-select-box id="gender" class="block mt-1" name="gender" :options="\App\Models\MyHorse::$gender"
-                                    :value="$myHorse->gender" />
+                                    :selected="$myHorse->gender" />
                                 <x-input-error :messages="$errors->get('gender')" class="mt-2" />
                             </div>
 

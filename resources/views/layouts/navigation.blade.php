@@ -17,13 +17,24 @@
                     </x-nav-link>
                 </div>
 
-                @if (Auth::user()->type === 'student')
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('my-horses.index')" :active="request()->routeIs('my-horses.*')">
-                            {{ __('My Horses') }}
-                        </x-nav-link>
-                    </div>
-                @endif
+                @switch(Auth::user()->type)
+                    @case('student')
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('my-horses.index')" :active="request()->routeIs('my-horses.*')">
+                                {{ __('My Horses') }}
+                            </x-nav-link>
+                        </div>
+                        @break
+                    @case('trainer')
+                        @break
+                    @case('executive')
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('clubs.index')" :active="request()->routeIs('clubs.*')">
+                                {{ __('Clubs') }}
+                            </x-nav-link>
+                        </div>
+                        @break
+                @endswitch
             </div>
 
             <!-- Settings Dropdown -->
@@ -93,13 +104,26 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
-        @if (Auth::user()->type === 'student')
-            <div class="pt-2 pb-3 space-y-1">
-                <x-responsive-nav-link :href="route('my-horses.index')" :active="request()->routeIs('my-horses.*')">
-                    {{ __('My Horses') }}
-                </x-responsive-nav-link>
-            </div>
-        @endif
+
+
+        @switch(Auth::user()->type)
+            @case('student')
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('my-horses.index')" :active="request()->routeIs('my-horses.*')">
+                        {{ __('My Horses') }}
+                    </x-responsive-nav-link>
+                </div>
+                @break
+            @case('trainer')
+                @break
+            @case('executive')
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('clubs.index')" :active="request()->routeIs('clubs.*')">
+                        {{ __('Clubs') }}
+                    </x-responsive-nav-link>
+                </div>
+                @break
+        @endswitch
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

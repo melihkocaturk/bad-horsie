@@ -41,4 +41,9 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasMany(MyHorse::class);
     }
+
+    public function Clubs(): HasMany
+    {
+        return $this->hasMany(Club::class);
+    }
 }

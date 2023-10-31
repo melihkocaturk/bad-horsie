@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MyHorseRequest;
 use App\Models\MyHorse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class MyHorseController extends Controller
 {
@@ -30,24 +30,9 @@ class MyHorseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(MyHorseRequest $request)
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['string', 'max:255'],
-            'avatar' => ['image', 'mimes:jpg,jpeg,png,gif', 'max:2048'],
-            'height' => ['integer', 'max:255'],
-        ]);
-
-        $data = [
-            'name' => $validated['name'],
-            'description' => $validated['description'],
-            'gender' => $request['gender'],
-            'race' => $request['race'],
-            'color' => $request['color'],
-            'height' => $validated['height'],
-            'fei_id' => $request['fei_id'],
-        ];
+        $data = $request->validated();
 
         if ($request->has('avatar')) {
             $data['avatar'] = Storage::putFile('horses/' . date("FY"), $request->file('avatar'));
@@ -78,24 +63,9 @@ class MyHorseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, MyHorse $myHorse)
+    public function update(MyHorseRequest $request, MyHorse $myHorse)
     {
-        $validated = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['string', 'max:255'],
-            'avatar' => ['image', 'mimes:jpg,jpeg,png,gif', 'max:2048'],
-            'height' => ['integer', 'max:255'],
-        ]);
-
-        $data = [
-            'name' => $validated['name'],
-            'description' => $validated['description'],
-            'gender' => $request['gender'],
-            'race' => $request['race'],
-            'color' => $request['color'],
-            'height' => $validated['height'],
-            'fei_id' => $request['fei_id'],
-        ];
+        $data = $request->validated();
 
         if ($request->has('avatar')) {
             $data['avatar'] = Storage::putFile('horses/' . date("FY"), $request->file('avatar'));
@@ -104,7 +74,7 @@ class MyHorseController extends Controller
         $myHorse->update($data);
 
         return redirect()->route('my-horses.index')
-            ->with('success', 'Horse update successfully.');
+            ->with('success', 'Horse successfully updated.');
     }
 
     /**

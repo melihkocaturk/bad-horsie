@@ -11,7 +11,7 @@
                 <div class="max-w-none">
                     <section>
                         <x-link-button :href="route('clubs.create')">
-                            Add New club
+                            Add New Club
                         </x-link-button>
 
                         @if (count($clubs) > 0)

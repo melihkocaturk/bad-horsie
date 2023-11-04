@@ -24,8 +24,18 @@
                                 {{ __('My Horses') }}
                             </x-nav-link>
                         </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('student-lessons.index')" :active="request()->routeIs('student-lessons.*')">
+                                {{ __('Lessons') }}
+                            </x-nav-link>
+                        </div>
                         @break
                     @case('trainer')
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('trainer-lessons.index')" :active="request()->routeIs('trainer-lessons.*')">
+                                {{ __('Lessons') }}
+                            </x-nav-link>
+                        </div>
                         @break
                     @case('executive')
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -113,8 +123,18 @@
                         {{ __('My Horses') }}
                     </x-responsive-nav-link>
                 </div>
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('student-lessons.index')" :active="request()->routeIs('student-lessons.*')">
+                        {{ __('Lessons') }}
+                    </x-responsive-nav-link>
+                </div>
                 @break
             @case('trainer')
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('trainer-lessons.index')" :active="request()->routeIs('trainer-lessons.*')">
+                        {{ __('Lessons') }}
+                    </x-responsive-nav-link>
+                </div>
                 @break
             @case('executive')
                 <div class="pt-2 pb-3 space-y-1">

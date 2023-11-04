@@ -104,6 +104,67 @@
                     <section class="space-y-6">
                         <header>
                             <h2 class="text-lg font-medium text-gray-900">
+                                {{ __('Members') }}
+                            </h2>
+                        </header>
+                    </section>
+
+                    <form method="post" action="{{ route('clubs.member.store', $club) }}" class="mt-6 space-y-6">
+                        @csrf
+
+                        <!-- E-mail -->
+                        <div>
+                            <x-input-label for="email" :value="__('E-mail')" />
+                            <x-text-input id="email" name="email" type="text" class="mt-1 block w-full" />
+                            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+                        </div>
+
+                        <div class="flex items-center gap-4">
+                            <x-primary-button>{{ __('Add') }}</x-primary-button>
+                        </div>
+                    </form>
+                </div>
+
+                @if (count($club->members) > 0)
+                    <table class="table-fixed w-full border border-slate-300 mt-6">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-2 bg-slate-100 border border-slate-300">{{ __('Name') }}</th>
+                                <th class="px-4 py-2 bg-slate-100 border border-slate-300 hidden md:table-cell">
+                                    {{ __('E-mail') }}</th>
+                                <th class="px-4 py-2 bg-slate-100 border border-slate-300">{{ __('Type') }}</th>
+                                <th class="px-4 py-2 bg-slate-100 border border-slate-300">&nbsp;</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach ($club->members as $member)
+                                <tr>
+                                    <td class="px-4 py-2 border border-slate-200">{{ $member->name }}</td>
+                                    <td class="px-4 py-2 border border-slate-200 hidden md:table-cell">
+                                        {{ $member->email }}</td>
+                                    <td class="px-4 py-2 border border-slate-200">
+                                        {{ \App\Models\User::$type[$member->type] }}</td>
+                                    <td class="px-4 py-2 border border-slate-200 relative text-center">
+                                        <form method="post"
+                                            action="{{ route('clubs.member.destroy', ['club' => $club, 'member' => $member]) }}">
+                                            @csrf
+                                            @method('delete')
+                                            <x-danger-button>{{ __('Remove') }}</x-danger-button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
+            </div>
+
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    <section class="space-y-6">
+                        <header>
+                            <h2 class="text-lg font-medium text-gray-900">
                                 {{ __('Delete') }}
                             </h2>
 

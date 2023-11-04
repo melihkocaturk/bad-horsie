@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -37,13 +38,28 @@ class User extends \TCG\Voyager\Models\User
         'student' => 'Öğrenci',
     ];
 
-    public function MyHorses(): HasMany
+    public function myHorses(): HasMany
     {
         return $this->hasMany(MyHorse::class);
     }
 
-    public function Clubs(): HasMany
+    public function clubs(): HasMany
     {
         return $this->hasMany(Club::class);
+    }
+
+    public function memberships(): BelongsToMany
+    {
+        return $this->belongsToMany(Club::class);
+    }
+
+    public function trainerLessons(): HasMany
+    {
+        return $this->hasMany(Lesson::class, 'trainer_id');
+    }
+
+    public function studentLessons(): HasMany
+    {
+        return $this->hasMany(Lesson::class, 'student_id');
     }
 }

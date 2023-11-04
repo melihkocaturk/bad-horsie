@@ -1,0 +1,54 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Club;
+use App\Models\User;
+use Illuminate\Http\Request;
+
+class MemberController extends Controller
+{
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Club $club, Request $request)
+    {
+        $user = User::where('email', $request->input('email'))
+            ->whereIn('type', ['student', 'trainer'])
+            ->first();
+
+        if (!$user) {
+            return redirect()->back()->with(
+                'error',
+                'User not found.'
+            );
+        }
+
+        if ($club->members()->where('user_id', $user->id)->exists()) {
+            return redirect()->back()->with(
+                'error',
+                'User is already a member.'
+            );
+        } else {
+            $club->members()->attach($user);
+        }
+
+        return redirect()->back()->with(
+            'success',
+            'New member added.'
+        );
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Club $club, User $member)
+    {
+        $club->members()->detach($member);
+
+        return redirect()->back()->with(
+            'success',
+            'Member removed.'
+        );
+    }
+}

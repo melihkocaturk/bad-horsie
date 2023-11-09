@@ -16,7 +16,7 @@
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
-        
+
         <!-- Name -->
         <div>
             <x-input-label for="name" :value="__('Name')" />
@@ -61,6 +61,16 @@
             </p>
             <x-input-error class="mt-2" :messages="$errors->get('avatar')" />
         </div>
+
+        @if ('trainer' === $user->type)
+            <!-- Türkiye Binicilik Federasyonu -->
+            <div>
+                <x-input-label for="tbf_link" :value="__('Türkiye Binicilik Federasyonu Linki')" />
+                <x-text-input id="tbf_link" name="tbf_link" type="text" class="mt-1 block w-full" :value="old('tbf_link', $user->userProfile ? $user->userProfile->tbf_link : '')"
+                    required autofocus />
+                <x-input-error class="mt-2" :messages="$errors->get('tbf_link')" />
+            </div>
+        @endif
 
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>

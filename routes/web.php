@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
         ->only(['store', 'destroy']);
     Route::resource('clubs.lessons', LessonController::class);
     Route::resource('/student/lessons', StudentLessonController::class, ['names' => 'student-lessons'])
-        ->only(['index', 'update']);
+        ->only(['index', 'show', 'update']);
     Route::resource('/trainer/lessons', TrainerLessonController::class, ['names' => 'trainer-lessons'])
         ->only(['index', 'edit', 'update']);
 });

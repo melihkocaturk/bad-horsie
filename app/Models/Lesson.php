@@ -18,6 +18,8 @@ class Lesson extends Model
         'student_id',
         'trainer_confirmation',
         'student_confirmation',
+        'reason_for_reject',
+        'grade',
         'comment',
     ];
 

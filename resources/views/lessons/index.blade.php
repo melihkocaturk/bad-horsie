@@ -5,6 +5,12 @@
         </h2>
     </x-slot>
 
+    <!-- Breadcrumbs -->
+    <x-breadcrumbs :links="[
+        'Clubs' => route('clubs.index'),
+        $club->name => route('clubs.show', $club),
+    ]" />
+
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
@@ -40,9 +46,21 @@
                                             </td>
                                             <td class="px-4 py-2 border border-slate-200">{{ $lesson->start }}</td>
                                             <td class="px-4 py-2 border border-slate-200">{{ $lesson->end }}</td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $lesson->trainer->name }}
+                                            <td class="px-4 py-2 border border-slate-200">
+                                                <span class="float-left">{{ $lesson->trainer->name }} &nbsp;</span>
+                                                @if (isset($lesson->trainer_confirmation))
+                                                    @if ($lesson->trainer_confirmation)
+                                                        <x-approve-icon></x-approve-icon>
+                                                    @else
+                                                        <x-reject-icon></x-reject-icon>
+                                                    @endif
+                                                @endif
                                             </td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $lesson->student->name }}
+                                            <td class="px-4 py-2 border border-slate-200">
+                                                <span class="float-left">{{ $lesson->student->name }} &nbsp;</span>
+                                                @if ($lesson->student_confirmation)
+                                                    <x-approve-icon></x-approve-icon>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

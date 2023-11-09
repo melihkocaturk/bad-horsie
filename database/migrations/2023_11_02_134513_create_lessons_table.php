@@ -21,6 +21,8 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\User::class, 'student_id');
             $table->boolean('trainer_confirmation')->nullable();
             $table->boolean('student_confirmation')->nullable();
+            $table->text('reason_for_reject')->nullable();
+            $table->tinyInteger('grade')->nullable();
             $table->text('comment')->nullable();
             $table->timestamps();
         });

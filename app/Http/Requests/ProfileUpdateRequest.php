@@ -19,6 +19,7 @@ class ProfileUpdateRequest extends FormRequest
             'name' => ['string', 'min:5', 'max:255'],
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
             'avatar' => ['image', 'mimes:jpg,jpeg,png,gif', 'max:2048'],
+            'tbf_link' => ['string', 'nullable'],
         ];
     }
 }

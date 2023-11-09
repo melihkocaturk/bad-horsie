@@ -54,14 +54,21 @@ class TrainerLessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
-        $validated = $request->validate([
-            'trainer_confirmation' => 'required|boolean',
-            'comment' => 'required_if:trainer_confirmation,0|nullable|string',
-        ]);
+        if ($request->has('grade')) {
+            $validated = $request->validate([
+                'grade' => 'nullable|int',
+                'comment' => 'nullable|string',
+            ]);
+        } else {
+            $validated = $request->validate([
+                'trainer_confirmation' => 'required|boolean',
+                'reason_for_reject' => 'required_if:trainer_confirmation,0|nullable|string',
+            ]);
+        }
 
         $lesson->update($validated);
 
-        return redirect()->route('trainer-lessons.index')
+        return redirect()->route('trainer-lessons.edit', ['lesson' => $lesson])
             ->with('success', 'Lesson successfully updated.');
     }
 

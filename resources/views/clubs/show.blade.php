@@ -5,6 +5,9 @@
         </h2>
     </x-slot>
 
+    <!-- Breadcrumbs -->
+    <x-breadcrumbs :links="['Clubs' => route('clubs.index')]" />
+
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
@@ -68,25 +71,31 @@
                             </h4>
 
                             @if (count($club->members) > 0)
-                                <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
-                                    @foreach ($club->members as $member)
-                                        <div class="flex-shrink-0 group block">
-                                            <div class="flex items-center">
-                                                <img class="inline-block flex-shrink-0 h-[3rem] w-[3rem] rounded-full"
-                                                    src="{{ asset('storage/' . $member->avatar) }}"
-                                                    alt="{{ $member->name }}" />
-                                                <div class="ml-3">
-                                                    <h3 class="font-semibold text-gray-800 dark:text-white">
-                                                        {{ $member->name }}
-                                                    </h3>
-                                                    <p class="text-sm font-medium text-gray-400">
-                                                        <a href="mailto:{{ $member->email }}">{{ $member->email }}</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
+                                <table class="table-fixed w-full border border-slate-300 mt-6">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-4 py-2 bg-slate-100 border border-slate-300">
+                                                {{ __('Name') }}</th>
+                                            <th
+                                                class="px-4 py-2 bg-slate-100 border border-slate-300 hidden md:table-cell">
+                                                {{ __('E-mail') }}</th>
+                                            <th class="px-4 py-2 bg-slate-100 border border-slate-300">
+                                                {{ __('Type') }}</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach ($club->members as $member)
+                                            <tr>
+                                                <td class="px-4 py-2 border border-slate-200">{{ $member->name }}</td>
+                                                <td class="px-4 py-2 border border-slate-200 hidden md:table-cell">
+                                                    {{ $member->email }}</td>
+                                                <td class="px-4 py-2 border border-slate-200">
+                                                    {{ \App\Models\User::$type[$member->type] }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             @else
                                 <div class="rounded-md border border-dashed border-slate-300 mt-6 p-8">
                                     <div class="text-center font-medium">

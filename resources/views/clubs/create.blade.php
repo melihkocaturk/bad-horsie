@@ -93,6 +93,30 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('coordinates')" />
                             </div>
 
+                            <!-- Tags -->
+                            <div>
+                                <x-input-label :value="__('Tags')" />
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    @foreach ($tags as $tag)
+                                        <label class="inline-flex items-center">
+                                            <input type="checkbox"
+                                                class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
+                                                name="tags[]" value="{{ $tag->id }}">
+                                            <span class="ml-2 text-sm text-gray-600">{{ $tag->name }}</span>
+                                        </label>
+                                    @endforeach
+                                </div>
+                                <x-input-error class="mt-2" :messages="$errors->get('tags')" />
+                            </div>
+
+                            <!-- Türkiye Binicilik Federasyonu -->
+                            <div>
+                                <x-input-label for="tbf_link" :value="__('Türkiye Binicilik Federasyonu Linki')" />
+                                <x-text-input id="tbf_link" name="tbf_link" type="text" class="mt-1 block w-full"
+                                    :value="old('tbf_link')" />
+                                <x-input-error class="mt-2" :messages="$errors->get('tbf_link')" />
+                            </div>
+
                             <div class="flex items-center gap-4">
                                 <x-primary-button>{{ __('Save') }}</x-primary-button>
                             </div>

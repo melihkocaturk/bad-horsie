@@ -46,7 +46,11 @@ class TrainerLessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
-        return view('trainer_lessons.edit', ['lesson' => $lesson]);
+        return view('trainer_lessons.edit', [
+            'lesson' => $lesson,
+            'clubHorses' => $lesson->club->horses,
+            'studentHorses' => $lesson->student->horses,
+        ]);
     }
 
     /**
@@ -58,6 +62,7 @@ class TrainerLessonController extends Controller
             $validated = $request->validate([
                 'grade' => 'nullable|int',
                 'comment' => 'nullable|string',
+                'horse_id' => 'nullable|integer',
             ]);
         } else {
             $validated = $request->validate([

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
+use App\Models\LessonRight;
 use Illuminate\Http\Request;
 
 class StudentLessonController extends Controller
@@ -12,8 +13,21 @@ class StudentLessonController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+        $membership = $user->memberships()->first();
+        $lessonRight = null;
+
+        if ($membership) {
+            $lessonRight = LessonRight::where([
+                'club_id' => $membership->id,
+                'user_id' => $user->id
+            ])->first();
+        }
+
         return view('student_lessons.index', [
-            'lessons' => auth()->user()->studentLessons
+            'lessons' => $user->studentLessons,
+            'membership' => $membership,
+            'lessonRight' => $lessonRight
         ]);
     }
 
@@ -58,7 +72,21 @@ class StudentLessonController extends Controller
             'student_confirmation' => 'required|boolean',
         ]);
 
-        $lesson->update($validated);
+        $lessonRight = LessonRight::where([
+            'club_id' => $lesson->club->id,
+            'user_id' => $request->user()->id
+        ])->first();
+
+        if ($lessonRight && $lessonRight->token > 0) {
+            $lessonRight->token -= 1;
+            $lessonRight->save();
+            $lesson->update($validated);
+        } else {
+            return redirect()->back()->with(
+                'error',
+                'You do not have the right to lesson.'
+            );
+        }
 
         return redirect()->route('student-lessons.index')
             ->with('success', 'Lesson successfully updated.');

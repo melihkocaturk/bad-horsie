@@ -22,6 +22,7 @@ return new class extends Migration
             $table->boolean('trainer_confirmation')->nullable();
             $table->boolean('student_confirmation')->nullable();
             $table->text('reason_for_reject')->nullable();
+            $table->foreignIdFor(\App\Models\Horse::class, 'horse_id')->nullable();
             $table->tinyInteger('grade')->nullable();
             $table->text('comment')->nullable();
             $table->timestamps();

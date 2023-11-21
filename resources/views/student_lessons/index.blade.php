@@ -10,6 +10,18 @@
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-none">
                     <section>
+                        @if (empty($membership))
+                            <div class="p-4 text-sm text-gray-800 rounded-lg bg-gray-50 dark:bg-gray-800 dark:text-gray-300"
+                                role="alert">
+                                You are not a member of a club yet.
+                            </div>
+                        @elseif (empty($lessonRight) || $lessonRight->token === 0)
+                            <div class="p-4 mb-6 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
+                                role="alert">
+                                <span class="font-medium">Warning!</span> You do not have any lesson rights.
+                            </div>
+                        @endif
+
                         @if (count($lessons) > 0)
                             <table class="table-fixed w-full border border-slate-300">
                                 <thead>
@@ -54,7 +66,8 @@
                                                         @method('PUT')
                                                         <input type="hidden" name="student_confirmation"
                                                             value="1">
-                                                        <x-primary-button class="bg-green-600">{{ __('Done') }}</x-primary-button>
+                                                        <x-primary-button
+                                                            class="bg-green-600">{{ __('Done') }}</x-primary-button>
                                                     </form>
                                                 @endif
                                             </td>

@@ -2,35 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MyHorseRequest;
-use App\Models\MyHorse;
+use App\Http\Requests\HorseRequest;
+use App\Models\Club;
+use App\Models\Horse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class MyHorseController extends Controller
+class ClubHorseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(int $id)
     {
-        return view('my_horses.index', [
-            'myHorses' => auth()->user()->myHorses
+        return view('club_horses.index', [
+            'club' => Club::with('horses')
+                ->findOrFail($id),
         ]);
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Club $club)
     {
-        return view('my_horses.create');
+        return view('club_horses.create', [
+            'club' => $club, 
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(MyHorseRequest $request)
+    public function store(HorseRequest $request, Club $club)
     {
         $data = $request->validated();
 
@@ -38,32 +42,38 @@ class MyHorseController extends Controller
             $data['avatar'] = Storage::putFile('horses/' . date("FY"), $request->file('avatar'));
         }
 
-        auth()->user()->myHorses()->create($data);
+        $club->horses()->create($data);
 
-        return redirect()->route('my-horses.index')
+        return redirect()->route('clubs.horses.index', $club)
             ->with('success', 'Horse successfully created.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(MyHorse $myHorse)
+    public function show(Club $club, Horse $horse)
     {
-        return view('my_horses.show', ['myHorse' => $myHorse]);
+        return view('club_horses.show', [
+            'club' => $club, 
+            'horse' => $horse,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MyHorse $myHorse)
+    public function edit(Club $club, Horse $horse)
     {
-        return view('my_horses.edit', ['myHorse' => $myHorse]);
+        return view('club_horses.edit', [
+            'club' => $club, 
+            'horse' => $horse,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(MyHorseRequest $request, MyHorse $myHorse)
+    public function update(HorseRequest $request, Club $club, Horse $horse)
     {
         $data = $request->validated();
 
@@ -71,20 +81,20 @@ class MyHorseController extends Controller
             $data['avatar'] = Storage::putFile('horses/' . date("FY"), $request->file('avatar'));
         }
 
-        $myHorse->update($data);
+        $horse->update($data);
 
-        return redirect()->route('my-horses.index')
+        return redirect()->route('clubs.horses.index', $club)
             ->with('success', 'Horse successfully updated.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MyHorse $myHorse)
+    public function destroy(Club $club, Horse $horse)
     {
-        $myHorse->delete();
+        $horse->delete();
 
-        return redirect()->route('my-horses.index')
+        return redirect()->route('clubs.horses.index', $club)
             ->with('success', 'Horse removed.');
     }
 }

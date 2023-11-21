@@ -62,12 +62,12 @@
             <x-input-error class="mt-2" :messages="$errors->get('avatar')" />
         </div>
 
-        @if ('trainer' === $user->type)
+        @if (in_array($user->type, ['student', 'trainer']))
             <!-- Türkiye Binicilik Federasyonu -->
             <div>
                 <x-input-label for="tbf_link" :value="__('Türkiye Binicilik Federasyonu Linki')" />
-                <x-text-input id="tbf_link" name="tbf_link" type="text" class="mt-1 block w-full" :value="old('tbf_link', $user->userProfile ? $user->userProfile->tbf_link : '')"
-                    required autofocus />
+                <x-text-input id="tbf_link" name="tbf_link" type="text" class="mt-1 block w-full"
+                    :value="old('tbf_link', $user->userProfile ? $user->userProfile->tbf_link : '')" />
                 <x-input-error class="mt-2" :messages="$errors->get('tbf_link')" />
             </div>
         @endif

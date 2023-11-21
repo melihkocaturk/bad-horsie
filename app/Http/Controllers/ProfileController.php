@@ -43,7 +43,7 @@ class ProfileController extends Controller
 
         $user->save();
 
-        if ('trainer' === $user->type) {
+        if (in_array($user->type, ['student', 'trainer'])) {
             $userProfile = $user->userProfile ?: new UserProfile;
             $userProfile->tbf_link = $validated['tbf_link'];
             $user->userProfile()->save($userProfile);

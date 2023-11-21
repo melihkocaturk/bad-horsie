@@ -20,8 +20,8 @@
                 @switch(Auth::user()->type)
                     @case('student')
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                            <x-nav-link :href="route('my-horses.index')" :active="request()->routeIs('my-horses.*')">
-                                {{ __('My Horses') }}
+                            <x-nav-link :href="route('horses.index')" :active="request()->routeIs('horses.*')">
+                                {{ __('Horses') }}
                             </x-nav-link>
                         </div>
                         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -119,8 +119,8 @@
         @switch(Auth::user()->type)
             @case('student')
                 <div class="pt-2 pb-3 space-y-1">
-                    <x-responsive-nav-link :href="route('my-horses.index')" :active="request()->routeIs('my-horses.*')">
-                        {{ __('My Horses') }}
+                    <x-responsive-nav-link :href="route('horses.index')" :active="request()->routeIs('horses.*')">
+                        {{ __('Horses') }}
                     </x-responsive-nav-link>
                 </div>
                 <div class="pt-2 pb-3 space-y-1">

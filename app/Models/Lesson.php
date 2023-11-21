@@ -19,6 +19,7 @@ class Lesson extends Model
         'trainer_confirmation',
         'student_confirmation',
         'reason_for_reject',
+        'horse_id',
         'grade',
         'comment',
     ];

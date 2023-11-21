@@ -23,6 +23,8 @@ class ClubRequest extends FormRequest
             'email' => ['string', 'nullable', 'max:191'],
             'web' => ['string', 'nullable', 'max:191'],
             'coordinates' => ['string', 'nullable', 'max:191'],
+            'tags' => ['nullable'],
+            'tbf_link' => ['string', 'nullable', 'max:191'],
         ];
     }
 }

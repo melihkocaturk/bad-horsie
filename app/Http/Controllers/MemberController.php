@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Club;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MemberController extends Controller
 {
@@ -28,6 +29,11 @@ class MemberController extends Controller
             return redirect()->back()->with(
                 'error',
                 'User is already a member.'
+            );
+        } elseif (DB::table('club_user')->where('user_id', $user->id)->count() > 0) {
+            return redirect()->back()->with(
+                'error',
+                'User is a member of another club.'
             );
         } else {
             $club->members()->attach($user);

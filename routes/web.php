@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\ClubController;
+use App\Http\Controllers\ClubHorseController;
 use App\Http\Controllers\LessonController;
+use App\Http\Controllers\LessonRightController;
 use App\Http\Controllers\MemberController;
-use App\Http\Controllers\MyHorseController;
+use App\Http\Controllers\StudentHorseController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentLessonController;
 use App\Http\Controllers\TrainerLessonController;
@@ -33,7 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('/my-horses', MyHorseController::class, ['names' => 'my-horses']);
+    Route::resource('/horses', StudentHorseController::class, ['names' => 'horses']);
+    Route::resource('clubs.horses', ClubHorseController::class);
     Route::resource('/clubs', ClubController::class, ['names' => 'clubs']);
     Route::resource('clubs.member', MemberController::class)
         ->only(['store', 'destroy']);
@@ -42,6 +45,7 @@ Route::middleware('auth')->group(function () {
         ->only(['index', 'show', 'update']);
     Route::resource('/trainer/lessons', TrainerLessonController::class, ['names' => 'trainer-lessons'])
         ->only(['index', 'edit', 'update']);
+    Route::resource('clubs.lesson-rights', LessonRightController::class);
 });
 
 require __DIR__.'/auth.php';

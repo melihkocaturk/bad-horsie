@@ -61,10 +61,10 @@
                             @endphp
 
                             <div>
-                                <x-input-label for="trainer" :value="__('Trainer')" />
-                                <x-select-box id="trainer" class="block mt-1" name="trainer_id" :options="$options"
-                                    :value="old('trainer_id')" />
-                                <x-input-error :messages="$errors->get('trainer')" class="mt-2" />
+                                <x-input-label for="trainer_id" :value="__('Trainer')" />
+                                <x-select-box id="trainer_id" class="block mt-1" name="trainer_id" :options="$options"
+                                    :selected="old('trainer_id')" />
+                                <x-input-error :messages="$errors->get('trainer_id')" class="mt-2" />
                             </div>
 
                             <!-- Student -->
@@ -80,7 +80,7 @@
                             <div>
                                 <x-input-label for="student" :value="__('Student')" />
                                 <x-select-box id="student" class="block mt-1" name="student_id" :options="$options"
-                                    :value="old('student_id')" />
+                                    :selected="old('student_id')" />
                                 <x-input-error :messages="$errors->get('student')" class="mt-2" />
                             </div>
 

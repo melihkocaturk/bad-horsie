@@ -1,12 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Horses') }}
+            {{ __('Horses') }}
         </h2>
     </x-slot>
 
     <!-- Breadcrumbs -->
-    <x-breadcrumbs :links="['My Horses' => route('my-horses.index')]" />
+    <x-breadcrumbs :links="[
+        'Clubs' => route('clubs.index'),
+        $club->name => route('clubs.show', $club),
+        'Horses' => route('clubs.horses.index', $club),
+    ]" />
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
@@ -19,7 +23,7 @@
                             </h2>
                         </header>
 
-                        <form method="post" action="{{ route('my-horses.store') }}" class="mt-6 space-y-6"
+                        <form method="post" action="{{ route('clubs.horses.store', $club) }}" class="mt-6 space-y-6"
                             enctype="multipart/form-data">
                             @csrf
 
@@ -49,8 +53,8 @@
                             <!-- Gender -->
                             <div>
                                 <x-input-label for="gender" :value="__('Gender')" />
-                                <x-select-box id="gender" class="block mt-1" name="gender" :options="\App\Models\MyHorse::$gender"
-                                    :value="old('gender')" />
+                                <x-select-box id="gender" class="block mt-1" name="gender" :options="\App\Models\Horse::$gender"
+                                    :selected="old('gender')" />
                                 <x-input-error :messages="$errors->get('gender')" class="mt-2" />
                             </div>
 

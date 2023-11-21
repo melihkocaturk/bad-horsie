@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ClubRequest;
 use App\Models\Club;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,7 +25,7 @@ class ClubController extends Controller
      */
     public function create()
     {
-        return view('clubs.create');
+        return view('clubs.create', ['tags' => Tag::all()]);
     }
 
     /**
@@ -42,7 +43,11 @@ class ClubController extends Controller
             $data['banner'] = Storage::putFile('clubs/' . date("FY"), $request->file('banner'));
         }
 
-        auth()->user()->clubs()->create($data);
+        $club = auth()->user()->clubs()->create($data);
+
+        if ($request->has('tags')) {
+            $club->tags()->sync((array) $data['tags']);
+        }
 
         return redirect()->route('clubs.index')
             ->with('success', 'Club successfully created.');
@@ -51,9 +56,11 @@ class ClubController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Club $club)
+    public function show(int $id)
     {
-        return view('clubs.show', ['club' => $club]);
+        return view('clubs.show', [
+            'club' => Club::with('members', 'tags', 'horses')->findOrFail($id),
+        ]);
     }
 
     /**
@@ -61,7 +68,10 @@ class ClubController extends Controller
      */
     public function edit(Club $club)
     {
-        return view('clubs.edit', ['club' => $club]);
+        return view('clubs.edit', [
+            'club' => $club,
+            'tags' => Tag::all(),
+        ]);
     }
 
     /**
@@ -81,7 +91,11 @@ class ClubController extends Controller
 
         $club->update($data);
 
-        return redirect()->route('clubs.index')
+        if ($request->has('tags')) {
+            $club->tags()->sync((array) $data['tags']);
+        }
+        
+        return redirect()->route('clubs.show', ['club' => $club])
             ->with('success', 'Club successfully updated.');
     }
 

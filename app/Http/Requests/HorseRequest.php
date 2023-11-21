@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Models\MyHorse;
+use App\Models\Horse;
 use Illuminate\Foundation\Http\FormRequest;
 
-class MyHorseRequest extends FormRequest
+class HorseRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -18,7 +18,7 @@ class MyHorseRequest extends FormRequest
             'name' => ['required', 'string', 'max:191'],
             'description' => ['string', 'max:191'],
             'avatar' => ['image', 'mimes:jpg,jpeg,png,gif', 'max:2048'],
-            'gender' => ['required', 'string', 'max:191', 'in:' . implode(',', array_keys(MyHorse::$gender))],
+            'gender' => ['required', 'string', 'max:191', 'in:' . implode(',', array_keys(Horse::$gender))],
             'race' => ['string', 'max:191'],
             'color' => ['string', 'max:191'],
             'height' => ['integer', 'max:255'],

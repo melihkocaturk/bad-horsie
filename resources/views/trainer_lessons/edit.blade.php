@@ -143,6 +143,24 @@
                                 @csrf
                                 @method('PUT')
 
+                                <!-- Horse -->
+                                @php
+                                    $options = [];
+                                    foreach ($clubHorses as $horse) {
+                                        $options += [$horse->id => $horse->name];
+                                    }
+                                    foreach ($studentHorses as $horse) {
+                                        $options += [$horse->id => $horse->name];
+                                    }
+                                @endphp
+
+                                <div>
+                                    <x-input-label for="horse_id" :value="__('Horse')" />
+                                    <x-select-box id="horse_id" class="block mt-1" name="horse_id" :options="$options"
+                                        :selected="$lesson->horse_id" />
+                                    <x-input-error :messages="$errors->get('horse_id')" class="mt-2" />
+                                </div>
+
                                 <!-- Grade -->
                                 <div>
                                     <x-input-label for="grade" :value="__('Grade')" />

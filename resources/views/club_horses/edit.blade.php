@@ -1,14 +1,15 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Horses') }}
+            {{ __('Horses') }}
         </h2>
     </x-slot>
 
     <!-- Breadcrumbs -->
     <x-breadcrumbs :links="[
-        'My Horses' => route('my-horses.index'),
-        $myHorse->name => route('my-horses.show', $myHorse),
+        'Clubs' => route('clubs.index'),
+        $club->name => route('clubs.show', $club),
+        'Horses' => route('clubs.horses.index', $club),
     ]" />
 
     <div class="py-6">
@@ -22,7 +23,7 @@
                             </h2>
                         </header>
 
-                        <form method="post" action="{{ route('my-horses.update', $myHorse) }}" class="mt-6 space-y-6"
+                        <form method="post" action="{{ route('clubs.horses.update', ['club' => $club, 'horse' => $horse]) }}" class="mt-6 space-y-6"
                             enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -31,7 +32,7 @@
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
                                 <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"
-                                    :value="$myHorse->name" />
+                                    :value="$horse->name" />
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
                             </div>
 
@@ -39,7 +40,7 @@
                             <div>
                                 <x-input-label for="description" :value="__('Description')" />
                                 <x-textarea id="description" name="description" type="text" class="mt-1 block w-full"
-                                    :value="$myHorse->description" maxlength="191" />
+                                    :value="$horse->description" maxlength="191" />
                                 <x-input-error class="mt-2" :messages="$errors->get('description')" />
                             </div>
 
@@ -53,8 +54,8 @@
                             <!-- Gender -->
                             <div>
                                 <x-input-label for="gender" :value="__('Gender')" />
-                                <x-select-box id="gender" class="block mt-1" name="gender" :options="\App\Models\MyHorse::$gender"
-                                    :selected="$myHorse->gender" />
+                                <x-select-box id="gender" class="block mt-1" name="gender" :options="\App\Models\Horse::$gender"
+                                    :selected="$horse->gender" />
                                 <x-input-error :messages="$errors->get('gender')" class="mt-2" />
                             </div>
 
@@ -62,7 +63,7 @@
                             <div>
                                 <x-input-label for="race" :value="__('Race')" />
                                 <x-text-input id="race" name="race" type="text" class="mt-1 block w-full"
-                                    :value="$myHorse->race" />
+                                    :value="$horse->race" />
                                 <x-input-error class="mt-2" :messages="$errors->get('race')" />
                             </div>
 
@@ -70,7 +71,7 @@
                             <div>
                                 <x-input-label for="color" :value="__('Color')" />
                                 <x-text-input id="color" name="color" type="text" class="mt-1 block w-full"
-                                    :value="$myHorse->color" />
+                                    :value="$horse->color" />
                                 <x-input-error class="mt-2" :messages="$errors->get('color')" />
                             </div>
 
@@ -78,7 +79,7 @@
                             <div>
                                 <x-input-label for="height" :value="__('Height')" />
                                 <x-text-input id="height" name="height" type="text" class="mt-1 block w-full"
-                                    :value="$myHorse->height" />
+                                    :value="$horse->height" />
                                 <x-input-error class="mt-2" :messages="$errors->get('height')" />
                             </div>
 
@@ -86,7 +87,7 @@
                             <div>
                                 <x-input-label for="fei_id" :value="__('FEI ID')" />
                                 <x-text-input id="fei_id" name="fei_id" type="text" class="mt-1 block w-full"
-                                    :value="$myHorse->fei_id" />
+                                    :value="$horse->fei_id" />
                                 <x-input-error class="mt-2" :messages="$errors->get('fei_id')" />
                             </div>
 
@@ -112,7 +113,7 @@
                         </header>
                     </section>
 
-                    <form method="post" action="{{ route('my-horses.destroy', $myHorse) }}" class="pt-6">
+                    <form method="post" action="{{ route('clubs.horses.destroy', ['club' => $club, 'horse' => $horse]) }}" class="pt-6">
                         @csrf
                         @method('delete')
                         <x-danger-button>{{ __('Delete') }}</x-danger-button>

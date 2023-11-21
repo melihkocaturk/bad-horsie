@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class MyHorse extends Model
+class Horse extends Model
 {
     use HasFactory;
 
@@ -26,8 +26,8 @@ class MyHorse extends Model
         'female' => 'Dişi',
     ];
 
-    public function user(): BelongsTo
+    public function owner(): MorphTo
     {
-        return $this->belongsTo(User::class);
+        return $this->morphTo();
     }
 }

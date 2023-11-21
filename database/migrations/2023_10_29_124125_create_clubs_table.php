@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('web')->nullable();
             $table->string('coordinates')->nullable();
+            $table->string('tbf_link')->nullable();
             $table->foreignIdFor(\App\Models\User::class)->constrained();
             $table->timestamps();
         });

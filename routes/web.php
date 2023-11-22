@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ClubHorseController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\LessonRightController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\StudentHorseController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\StudentLessonController;
 use App\Http\Controllers\TrainerLessonController;
 use Illuminate\Support\Facades\Route;
@@ -45,13 +47,16 @@ Route::middleware('auth')->group(function () {
         ->only(['index', 'show', 'update']);
     Route::resource('/trainer/lessons', TrainerLessonController::class, ['names' => 'trainer-lessons'])
         ->only(['index', 'edit', 'update']);
-    Route::resource('clubs.lesson-rights', LessonRightController::class);
+    Route::resource('clubs.lesson-rights', LessonRightController::class)
+        ->only(['create', 'store']);
+    Route::resource('/events', EventController::class, ['names' => 'events'])
+        ->except('show');
+    Route::get('/schedule', ScheduleController::class)->name('schedule');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 // Voyager
 Route::group(['prefix' => 'sudo'], function () {
     Voyager::routes();
 });
-

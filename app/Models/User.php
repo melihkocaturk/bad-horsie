@@ -79,4 +79,9 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasMany(LessonRightLog::class);
     }
+
+    public function events(): HasMany
+    {
+        return $this->hasMany(Event::class);
+    }
 }

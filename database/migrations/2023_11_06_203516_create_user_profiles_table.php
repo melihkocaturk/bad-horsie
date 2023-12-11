@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('user_profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\User::class)->constrained();
+            $table->foreignIdFor(\App\Models\User::class)->constrained()->onDelete('cascade');
             $table->string('tbf_link')->nullable();
             $table->timestamps();
         });

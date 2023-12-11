@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Club::class)->constrained();
+            $table->foreignIdFor(\App\Models\Club::class)->constrained()->onDelete('cascade');
             $table->string('name');
             $table->dateTime('start');
             $table->dateTime('end');
-            $table->foreignIdFor(\App\Models\User::class, 'trainer_id');
-            $table->foreignIdFor(\App\Models\User::class, 'student_id');
+            $table->foreignIdFor(\App\Models\User::class, 'trainer_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\User::class, 'student_id')->constrained()->onDelete('cascade');
             $table->boolean('trainer_confirmation')->nullable();
             $table->boolean('student_confirmation')->nullable();
             $table->text('reason_for_reject')->nullable();

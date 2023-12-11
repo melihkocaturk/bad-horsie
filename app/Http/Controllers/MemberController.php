@@ -14,7 +14,11 @@ class MemberController extends Controller
      */
     public function store(Club $club, Request $request)
     {
-        $user = User::where('email', $request->input('email'))
+        $validated = $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        $user = User::where('email', $validated['email'])
             ->whereIn('type', ['student', 'trainer'])
             ->first();
 

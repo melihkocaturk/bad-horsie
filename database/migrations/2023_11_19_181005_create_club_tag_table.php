@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('club_tag', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Tag::class)->constrained();
-            $table->foreignIdFor(\App\Models\Club::class)->constrained();
+            $table->foreignIdFor(\App\Models\Tag::class)->constrained()->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\Club::class)->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

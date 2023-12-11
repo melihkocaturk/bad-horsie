@@ -3,6 +3,19 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
+use App\Models\Club;
+use App\Models\Event;
+use App\Models\Horse;
+use App\Models\Lesson;
+use App\Models\LessonRight;
+use App\Models\User;
+use App\Policies\ClubPolicy;
+use App\Policies\EventPolicy;
+use App\Policies\HorsePolicy;
+use App\Policies\LessonPolicy;
+use App\Policies\LessonRightPolicy;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +26,11 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
+        Horse::class => HorsePolicy::class,
+        Club::class => ClubPolicy::class,
+        Event::class => EventPolicy::class,
+        Lesson::class => LessonPolicy::class,
+        LessonRight::class => LessonRightPolicy::class,
     ];
 
     /**
@@ -21,6 +38,20 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('show-student-lesson', function (User $user, Lesson $lesson) {
+            return $user->id === $lesson->student_id;
+        });
+
+        Gate::define('update-student-lesson', function (User $user, Lesson $lesson) {
+            return $user->id === $lesson->student_id;
+        });
+
+        Gate::define('show-trainer-lesson', function (User $user, Lesson $lesson) {
+            return $user->id === $lesson->trainer_id;
+        });
+
+        Gate::define('update-trainer-lesson', function (User $user, Lesson $lesson) {
+            return $user->id === $lesson->trainer_id;
+        });
     }
 }

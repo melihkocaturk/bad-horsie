@@ -8,6 +8,7 @@ use App\Models\Club;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class MemberController extends Controller
 {
@@ -29,6 +30,14 @@ class MemberController extends Controller
             'club_id' => 'required|integer',
         ]);
 
+        $club = Club::find($validated['club_id']);
+
+        if (! Gate::allows('store-member', $club)) {
+            return response()->json([
+                'error' => 'You don\'t have permission.'
+            ], status: 403);
+        }
+
         $user = User::where('email', $validated['email'])
             ->whereIn('type', ['student', 'trainer'])
             ->first();
@@ -38,11 +47,6 @@ class MemberController extends Controller
                 'error' => 'User not found.'
             ], status: 404);
         }
-
-        $club = Club::where([
-            'id' => $validated['club_id'],
-            'user_id' => $request->user()->id
-        ])->first();
 
         if ($club->members()->where('user_id', $user->id)->exists()) {
             return response()->json([
@@ -80,10 +84,13 @@ class MemberController extends Controller
      */
     public function destroy(Request $request, User $member)
     {
-        $club = Club::where([
-            'id' => $request->query('club_id'),
-            'user_id' => $request->user()->id
-        ])->first();
+        $club = Club::find($request->query('club_id'));
+
+        if (! Gate::allows('destroy-member', $club)) {
+            return response()->json([
+                'error' => 'You don\'t have permission.'
+            ], status: 403);
+        }
 
         $club->members()->detach($member);
 

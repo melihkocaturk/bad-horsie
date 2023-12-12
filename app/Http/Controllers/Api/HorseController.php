@@ -14,7 +14,7 @@ class HorseController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Horse::class, 'horse');
+        $this->authorizeResource(Horse::class);
     }
     
     /**

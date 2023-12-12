@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class LessonController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Lesson::class);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -45,11 +50,11 @@ class LessonController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Club $club, int $lesson_id)
+    public function show(Club $club, Lesson $lesson)
     {
         return view('lessons.show', [
             'club' => $club, 
-            'lesson' => Lesson::with('trainer', 'student')->findOrFail($lesson_id),
+            'lesson' => $lesson,
         ]);
     }
 

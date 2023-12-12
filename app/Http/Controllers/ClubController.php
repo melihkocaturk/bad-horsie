@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class ClubController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Club::class);
+    }
+    
     /**
      * Display a listing of the resource.
      */
@@ -56,10 +61,10 @@ class ClubController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(Club $club)
     {
         return view('clubs.show', [
-            'club' => Club::with('members', 'tags', 'horses')->findOrFail($id),
+            'club' => $club,
         ]);
     }
 

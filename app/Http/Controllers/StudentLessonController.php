@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lesson;
 use App\Models\LessonRight;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class StudentLessonController extends Controller
 {
@@ -52,6 +53,13 @@ class StudentLessonController extends Controller
      */
     public function show(Lesson $lesson)
     {
+        if (! Gate::allows('show-student-lesson', $lesson)) {
+            return redirect()->back()->with(
+                'error',
+                'You don\'t have permission.'
+            );
+        }
+
         return view('student_lessons.show', ['lesson' => $lesson]);
     }
 
@@ -68,6 +76,13 @@ class StudentLessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
+        if (! Gate::allows('update-student-lesson', $lesson)) {
+            return redirect()->back()->with(
+                'error',
+                'You don\'t have permission.'
+            );
+        }
+
         $validated = $request->validate([
             'student_confirmation' => 'required|boolean',
         ]);

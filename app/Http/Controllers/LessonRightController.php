@@ -7,6 +7,7 @@ use App\Models\LessonRight;
 use App\Models\LessonRightLog;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class LessonRightController extends Controller
 {
@@ -56,6 +57,13 @@ class LessonRightController extends Controller
      */
     public function store(Request $request, Club $club)
     {
+        if (! Gate::allows('store-lesson-right', $club)) {
+            return redirect()->back()->with(
+                'error',
+                'You don\'t have permission.'
+            );
+        }
+
         $validated = $request->validate([
             'user_id' => 'required|integer',
             'token' => 'required|integer',

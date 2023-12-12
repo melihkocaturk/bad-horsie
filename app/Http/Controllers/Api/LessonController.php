@@ -13,7 +13,7 @@ class LessonController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Lesson::class, 'lesson');
+        $this->authorizeResource(Lesson::class);
     }
     
     /**

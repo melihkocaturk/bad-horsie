@@ -13,7 +13,7 @@ class ClubController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Club::class, 'club');
+        $this->authorizeResource(Club::class);
     }
 
     /**

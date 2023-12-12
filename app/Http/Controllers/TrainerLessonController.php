@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TrainerLessonController extends Controller
 {
@@ -46,6 +47,13 @@ class TrainerLessonController extends Controller
      */
     public function edit(Lesson $lesson)
     {
+        if (! Gate::allows('edit-trainer-lesson', $lesson)) {
+            return redirect()->back()->with(
+                'error',
+                'You don\'t have permission.'
+            );
+        }
+
         return view('trainer_lessons.edit', [
             'lesson' => $lesson,
             'clubHorses' => $lesson->club->horses,
@@ -58,6 +66,13 @@ class TrainerLessonController extends Controller
      */
     public function update(Request $request, Lesson $lesson)
     {
+        if (! Gate::allows('update-trainer-lesson', $lesson)) {
+            return redirect()->back()->with(
+                'error',
+                'You don\'t have permission.'
+            );
+        }
+
         if ($request->has('grade')) {
             $validated = $request->validate([
                 'grade' => 'nullable|int',

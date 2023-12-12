@@ -9,14 +9,10 @@ use App\Models\LessonRight;
 use App\Models\LessonRightLog;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class LessonRightController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorizeResource(LessonRight::class, 'lesson-right');
-    }
-
     /**
      * Display a listing of the resource.
      */
@@ -66,10 +62,13 @@ class LessonRightController extends Controller
             'token' => 'required|integer',
         ]);
 
-        $club = Club::where([
-            'id' => $request->query('club_id'),
-            'user_id' => $request->user()->id
-        ])->first();
+        $club = Club::find($request->query('club_id'));
+
+        if (! Gate::allows('store-lesson-right', $club)) {
+            return response()->json([
+                'error' => 'You don\'t have permission.'
+            ], status: 403);
+        }
 
         $lessonRight = LessonRight::where([
             'club_id' => $club->id,

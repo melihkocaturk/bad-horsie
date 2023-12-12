@@ -6,6 +6,7 @@ use App\Models\Club;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class MemberController extends Controller
 {
@@ -14,6 +15,13 @@ class MemberController extends Controller
      */
     public function store(Club $club, Request $request)
     {
+        if (! Gate::allows('store-member', $club)) {
+            return redirect()->back()->with(
+                'error',
+                'You don\'t have permission.'
+            );
+        }
+
         $validated = $request->validate([
             'email' => 'required|email',
         ]);
@@ -54,6 +62,13 @@ class MemberController extends Controller
      */
     public function destroy(Club $club, User $member)
     {
+        if (! Gate::allows('destroy-member', $club)) {
+            return redirect()->back()->with(
+                'error',
+                'You don\'t have permission.'
+            );
+        }
+
         $club->members()->detach($member);
 
         return redirect()->back()->with(

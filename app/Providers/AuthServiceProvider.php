@@ -30,7 +30,6 @@ class AuthServiceProvider extends ServiceProvider
         Club::class => ClubPolicy::class,
         Event::class => EventPolicy::class,
         Lesson::class => LessonPolicy::class,
-        LessonRight::class => LessonRightPolicy::class,
     ];
 
     /**
@@ -50,8 +49,24 @@ class AuthServiceProvider extends ServiceProvider
             return $user->id === $lesson->trainer_id;
         });
 
+        Gate::define('edit-trainer-lesson', function (User $user, Lesson $lesson) {
+            return $user->id === $lesson->trainer_id;
+        });
+
         Gate::define('update-trainer-lesson', function (User $user, Lesson $lesson) {
             return $user->id === $lesson->trainer_id;
+        });
+
+        Gate::define('store-lesson-right', function (User $user, Club $club) {
+            return $user->id === $club->user_id;
+        });
+
+        Gate::define('store-member', function (User $user, Club $club) {
+            return $user->id === $club->user_id;
+        });
+
+        Gate::define('destroy-member', function (User $user, Club $club) {
+            return $user->id === $club->user_id;
         });
     }
 }

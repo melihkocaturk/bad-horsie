@@ -18,7 +18,7 @@ class HorseResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'avatar' => $this->avatar,
+            'avatar' => asset('storage/' . $this->avatar),
             'gender' => \App\Models\Horse::$gender[$this->gender],
             'race' => $this->race,
             'color' => $this->color,

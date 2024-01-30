@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Resources\ProfileResource;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,15 @@ use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
+    /**
+     * Display the specified resource.
+     */
+    public function show(Request $request)
+    {
+        $user = $request->user();
+        return new ProfileResource($user->userProfile);
+    }
+
     /**
      * Update the specified resource in storage.
      */

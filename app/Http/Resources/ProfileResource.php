@@ -15,7 +15,10 @@ class ProfileResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'user' => new UserResource($this->user),
+            'name' => $this->user->name,
+            'email' => $this->user->email,
+            'avatar' => asset('storage/' . $this->user->avatar),
+            'type' => $this->user->type,
             'tbf_link' => $this->tbf_link,
         ];
     }

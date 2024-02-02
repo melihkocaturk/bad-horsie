@@ -62,7 +62,7 @@ class TrainerLessonController extends Controller
         } else {
             $validated = $request->validate([
                 'trainer_confirmation' => 'required|boolean',
-                'reason_for_reject' => 'required_if:trainer_confirmation,0|nullable|string',
+                'reason_for_reject' => 'required_if:trainer_confirmation,false|nullable|string',
             ]);
         }
 

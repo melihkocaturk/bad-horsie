@@ -16,7 +16,7 @@ class LessonResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'club_id' => $this->club_id,
+            'club_name' => $this->club->name,
             'name' => $this->name,
             'start' => $this->start,
             'end' => $this->end,
@@ -26,6 +26,8 @@ class LessonResource extends JsonResource
             'student_confirmation' => $this->student_confirmation,
             'reason_for_reject' => $this->reason_for_reject,
             'horse' => new HorseResource($this->horse),
+            'club_horses' => HorseResource::collection($this->club->horses),
+            'student_horses' => HorseResource::collection($this->student->horses),
             'grade' => $this->grade,
             'comment' => $this->comment,
         ];

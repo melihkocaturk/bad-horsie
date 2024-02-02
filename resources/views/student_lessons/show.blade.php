@@ -31,7 +31,7 @@
                                 </tr>
                                 <tr class="bg-slate-100">
                                     <td class="px-6 py-3 font-semibold">End:</td>
-                                    <td class="px-6 py-3">{{ $lesson->end }} cm</td>
+                                    <td class="px-6 py-3">{{ $lesson->end }}</td>
                                 </tr class="bg-slate-100">
                                 <tr>
                                     <td class="px-6 py-3 font-semibold">Confirmation:</td>

@@ -38,4 +38,9 @@ class Lesson extends Model
     {
         return $this->belongsTo(User::class, 'student_id');
     }
+
+    public function horse(): BelongsTo
+    {
+        return $this->belongsTo(Horse::class);
+    }
 }

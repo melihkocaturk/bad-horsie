@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Resources\ProfileResource;
+use App\Http\Resources\UserResource;
 use App\Models\UserProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ class ProfileController extends Controller
     public function show(Request $request)
     {
         $user = $request->user();
-        return new ProfileResource($user->userProfile);
+        return $user->userProfile ? new ProfileResource($user->userProfile) : new UserResource($user);
     }
 
     /**

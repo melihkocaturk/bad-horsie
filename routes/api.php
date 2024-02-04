@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\MemberController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\ScheduleController;
 use App\Http\Controllers\Api\StudentLessonController;
+use App\Http\Controllers\Api\TagController;
 use App\Http\Controllers\Api\TrainerLessonController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -50,4 +51,6 @@ Route::middleware('auth:sanctum')->group(function () {
         ->only(['index', 'show', 'update']);
     Route::apiResource('/trainer/lessons', TrainerLessonController::class)
         ->only(['index', 'show', 'update']);
+    Route::apiResource('/tags', TagController::class)
+        ->only(['index']);
 });

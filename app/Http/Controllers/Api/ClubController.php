@@ -53,10 +53,8 @@ class ClubController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(int $id)
+    public function show(Club $club)
     {
-        $club = Club::with('members', 'tags', 'horses')->findOrFail($id);
-
         return new ClubResource($club);
     }
 

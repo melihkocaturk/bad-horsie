@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Rules;
 
 class AuthController extends Controller
 {
@@ -45,5 +47,24 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'Logged out succesfully'
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'type' => ['required', 'string'],
+            'name' => ['required', 'string', 'max:191'],
+            'email' => ['required', 'string', 'email', 'max:191', 'unique:' . User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
+            'type' => $request->type,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return new UserResource($user);
     }
 }

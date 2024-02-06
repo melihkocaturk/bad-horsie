@@ -19,7 +19,7 @@ class MemberResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'avatar' => asset('storage/' . $this->avatar),
-            'type' => \App\Models\User::$type[$this->type],
+            'type' => $this->type,
         ];
     }
 }

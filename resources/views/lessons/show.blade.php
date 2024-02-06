@@ -41,8 +41,9 @@
                                     </td>
                                 </tr>
                                 <tr class="bg-slate-100">
-                                    <td class="px-6 py-3 font-semibold">Confirmation:</td>
+                                    <td class="px-6 py-3 font-semibold">Trainer:</td>
                                     <td class="px-6 py-3">
+                                        <span class="float-left">{{ $lesson->trainer->name }} &nbsp;</span>
                                         @if (isset($lesson->trainer_confirmation))
                                             @if ($lesson->trainer_confirmation)
                                                 <x-approve-icon></x-approve-icon>

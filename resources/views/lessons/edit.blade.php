@@ -23,7 +23,9 @@
                             </h2>
                         </header>
 
-                        <form method="post" action="{{ route('clubs.lessons.update', ['club' => $club, 'lesson' => $lesson]) }}" class="mt-6 space-y-6">
+                        <form method="post"
+                            action="{{ route('clubs.lessons.update', ['club' => $club, 'lesson' => $lesson]) }}"
+                            class="mt-6 space-y-6">
                             @csrf
                             @method('PUT')
 
@@ -55,8 +57,9 @@
                             @php
                                 $options = [];
                                 foreach ($club->members as $member) {
-                                    if ('trainer' === $member->type)
-                                    $options += [$member->id => $member->name];
+                                    if ('trainer' === $member->type) {
+                                        $options += [$member->id => $member->name];
+                                    }
                                 }
                             @endphp
 
@@ -71,8 +74,9 @@
                             @php
                                 $options = [];
                                 foreach ($club->members as $member) {
-                                    if ('student' === $member->type)
-                                    $options += [$member->id => $member->name];
+                                    if ('student' === $member->type) {
+                                        $options += [$member->id => $member->name];
+                                    }
                                 }
                             @endphp
 
@@ -88,6 +92,28 @@
                             </div>
                         </form>
                     </section>
+                </div>
+            </div>
+
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    <section class="space-y-6">
+                        <header>
+                            <h2 class="text-lg font-medium text-gray-900">
+                                {{ __('Delete') }}
+                            </h2>
+
+                            <p class="mt-1 text-sm text-gray-600">
+                                {{ __('Are you sure you want to delete?') }}
+                            </p>
+                        </header>
+                    </section>
+
+                    <form method="post" action="{{ route('clubs.lessons.destroy', ['club' => $club, 'lesson' => $lesson]) }}" class="pt-6">
+                        @csrf
+                        @method('delete')
+                        <x-danger-button>{{ __('Delete') }}</x-danger-button>
+                    </form>
                 </div>
             </div>
         </div>

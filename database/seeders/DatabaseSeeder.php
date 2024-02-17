@@ -37,12 +37,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             VoyagerDatabaseSeeder::class,
         ]);
-
+        
+        /*
         \App\Models\User::factory()->create([
             'name' => 'Melih Kocatürk',
             'email' => 'melihkocaturk@gmail.com',
             'role_id' => 1,
             'password' => bcrypt('a1z9'),
         ]);
+        */
     }
 }

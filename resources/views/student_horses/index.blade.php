@@ -20,7 +20,7 @@
                                     <a class="flex flex-wrap flex-col mt-6 bg-white border shadow-sm rounded-lg hover:shadow-lg transition dark:bg-gray-800 dark:border-gray-700 dark:shadow-slate-700/[.7]"
                                         href="{{ route('horses.show', $horse) }}">
                                         <img class="w-full h-auto rounded-t-lg"
-                                            src="{{ asset('storage/' . $horse->avatar) }}" alt="{{ $horse->name }}">
+                                            src="{{ Storage::url($horse->avatar) }}" alt="{{ $horse->name }}">
                                         <div class="p-4 md:p-5">
                                             <h3 class="text-lg font-bold text-gray-800">
                                                 {{ $horse->name }}

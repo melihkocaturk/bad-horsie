@@ -27,12 +27,12 @@
 
                         <div class="h-96 mt-6">
                             <img class="w-full h-full object-cover rounded-lg"
-                                src="{{ asset('storage/' . $club->banner) }}" alt="{{ $club->name }}">
+                                src="{{ Storage::url($club->banner) }}" alt="{{ $club->name }}">
                         </div>
 
                         <div class="mt-6">
                             <img class="w-48 h-48 mb-6 mr-6 float-left rounded-lg"
-                                src="{{ asset('storage/' . $club->logo) }}" alt="{{ $club->name }}">
+                                src="{{ Storage::url($club->logo) }}" alt="{{ $club->name }}">
                             <h3 class="text-lg font-bold text-gray-800">
                                 {{ $club->name }}
                             </h3>

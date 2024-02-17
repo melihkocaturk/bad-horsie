@@ -19,7 +19,7 @@
 
                         <div class="grid sm:grid-cols-2 grid-cols-1 gap-6 mt-6">
                             <div>
-                                <img class="w-full h-auto rounded-lg" src="{{ asset('storage/' . $horse->avatar) }}"
+                                <img class="w-full h-auto rounded-lg" src="{{ Storage::url($horse->avatar) }}"
                                     alt="{{ $horse->name }}">
                             </div>
                             <div>

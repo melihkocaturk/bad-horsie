@@ -67,7 +67,7 @@
                             class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
                             <div class="flex items-center">
                                 <img class="inline-block h-8 w-8 rounded-full ring-2 ring-white dark:ring-gray-800"
-                                    src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}">
+                                    src="{{ Storage::url(Auth::user()->avatar) }}" alt="{{ Auth::user()->name }}">
                                 <div class="ml-3">
                                     {{ Auth::user()->name }}
                                 </div>

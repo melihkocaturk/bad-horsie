@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('name');
             $table->dateTime('start');
             $table->dateTime('end');
-            $table->foreignIdFor(\App\Models\User::class, 'trainer_id')->constrained()->onDelete('cascade');
-            $table->foreignIdFor(\App\Models\User::class, 'student_id')->constrained()->onDelete('cascade');
+            $table->foreignIdFor(\App\Models\User::class, 'trainer_id')->constrained();
+            $table->foreignIdFor(\App\Models\User::class, 'student_id')->constrained();
             $table->boolean('trainer_confirmation')->nullable();
             $table->boolean('student_confirmation')->nullable();
             $table->text('reason_for_reject')->nullable();

@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class ClubResource extends JsonResource
 {
@@ -18,8 +19,8 @@ class ClubResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'logo' => asset('storage/' . $this->logo),
-            'banner' => asset('storage/' . $this->banner),
+            'logo' => Storage::url($this->logo),
+            'banner' => Storage::url($this->banner),
             'address' => $this->address,
             'phone' => $this->phone,
             'email' => $this->email,

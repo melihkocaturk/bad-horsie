@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class HorseResource extends JsonResource
 {
@@ -18,7 +19,7 @@ class HorseResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'description' => $this->description,
-            'avatar' => asset('storage/' . $this->avatar),
+            'avatar' => Storage::url($this->avatar),
             // 'gender' => \App\Models\Horse::$gender[$this->gender],
             'gender' => $this->gender,
             'race' => $this->race,

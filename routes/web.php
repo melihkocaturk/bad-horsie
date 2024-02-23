@@ -26,9 +26,16 @@ use TCG\Voyager\Facades\Voyager;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
-    return redirect('/login');
+    return view('welcome');
 });
+
+Route::get('/user-agreement', function () {
+    return view('pages/user-agreement');
+})->name('user-agreement');
+
+Route::get('pages/kvkk', function () {
+    return view('pages/kvkk');
+})->name('kvkk');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

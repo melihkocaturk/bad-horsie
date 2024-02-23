@@ -22,15 +22,15 @@
             <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                 @auth
                     <a href="{{ url('/dashboard') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                        class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
                 @else
                     <a href="{{ route('login') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
+                        class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
                         in</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
-                            class="ml-4 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">Register</a>
+                            class="ml-4 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Register</a>
                     @endif
                 @endauth
             </div>
@@ -44,10 +44,10 @@
             <div class="mt-16">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                     <a href="{{ route('register') }}"
-                        class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
+                        class="scale-100 p-6 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <div class="w-full text-center">
                             <div
-                                class="mx-auto h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
+                                class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" class="w-7 h-7 stroke-red-500">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -55,10 +55,9 @@
                                 </svg>
                             </div>
 
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Derslerini Planla
-                            </h2>
+                            <h2 class="mt-6 text-xl font-semibold text-gray-900">Derslerini Planla</h2>
 
-                            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                            <p class="mt-4 text-gray-500 text-sm leading-relaxed">
                                 Aylık, haftalık veya günlük ders planı oluşturun. Antrenör ve öğrencilere bildirim
                                 gönderilsin. Yapılan dersler öğrencinin paketinden otomatik olarak düşsün.
                             </p>
@@ -66,10 +65,10 @@
                     </a>
 
                     <a href="{{ route('register') }}"
-                        class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
+                        class="scale-100 p-6 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <div class="w-full text-center">
                             <div
-                                class="mx-auto h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
+                                class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" class="w-7 h-7 stroke-red-500">
                                     <path stroke-linecap="round"
@@ -77,10 +76,10 @@
                                 </svg>
                             </div>
 
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Atlarına Profil
+                            <h2 class="mt-6 text-xl font-semibold text-gray-900">Atlarına Profil
                                 Oluştur</h2>
 
-                            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                            <p class="mt-4 text-gray-500 text-sm leading-relaxed">
                                 Tüm kulüp atlarına profil oluşturabilir, bilgilerini düzenleyebilirsiniz. Atlarınızın
                                 kaç saat çalıştığını ve kaç ders yaptığını kaydedebilirsiniz. Hangi öğrencinin hangi at
                                 ile derse gireceğini eşleştirerek program oluşturabilirsiniz.
@@ -89,10 +88,10 @@
                     </a>
 
                     <a href="{{ route('register') }}"
-                        class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
+                        class="scale-100 p-6 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <div class="w-full text-center">
                             <div
-                                class="mx-auto h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
+                                class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" class="w-7 h-7 stroke-red-500">
                                     <path stroke-linecap="round"
@@ -100,10 +99,10 @@
                                 </svg>
                             </div>
 
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Bildirimlerini Aç
+                            <h2 class="mt-6 text-xl font-semibold text-gray-900">Bildirimlerini Aç
                             </h2>
 
-                            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                            <p class="mt-4 text-gray-500 text-sm leading-relaxed">
                                 Atınızın tüm sağlık verileri, nal çakım zamanları, aşı takvimi, beslenme rasyonu ve daha
                                 fazlasının kaydını tutabilirsiniz. Etkinlik takvimi ile dilediğiniz zaman bildirim alır,
                                 önemli günleri unutmazsınız.
@@ -112,10 +111,10 @@
                     </a>
 
                     <div
-                        class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
+                        class="scale-100 p-6 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <div class="w-full text-center">
                             <div
-                                class="mx-auto h-16 w-16 bg-red-50 dark:bg-red-800/20 flex items-center justify-center rounded-full">
+                                class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" class="w-7 h-7 stroke-red-500">
                                     <path fill-rule="evenodd"
@@ -124,9 +123,9 @@
                                 </svg>
                             </div>
 
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">Uygulamayı İndir</h2>
+                            <h2 class="mt-6 text-xl font-semibold text-gray-900">Uygulamayı İndir</h2>
 
-                            <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                            <p class="mt-4 text-gray-500 text-sm leading-relaxed">
                                 Sen de aramıza katıl! Mobil uygulamamızı indirerek, güncellemelerden anında
                                 haberdar olabilir ve favori içeriklerini her zaman yanında
                                 taşırsın. Hızlı, pratik ve kullanıcı dostu arayüzümüzle hayatını kolaylaştır.
@@ -137,21 +136,21 @@
             </div>
 
             <div class="flex justify-center mt-16 px-0 sm:items-center sm:justify-between">
-                <div class="text-center text-sm text-gray-500 dark:text-gray-400 sm:text-left">
+                <div class="text-center text-sm text-gray-500 sm:text-left">
                     <div class="flex items-center gap-4">
                         <a href="{{ route('user-agreement') }}" target="blank"
-                            class="hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            class="hover:text-gray-700 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
                             Kullanıcı Sözleşmesi
                         </a>
 
                         <a href="{{ route('kvkk') }}" target="blank"
-                            class="hover:text-gray-700 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
+                            class="hover:text-gray-700 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
                             KVKK Metni
                         </a>
                     </div>
                 </div>
 
-                <div class="ml-4 text-center text-sm text-gray-500 dark:text-gray-400">
+                <div class="ml-4 text-center text-sm text-gray-500">
                     © {{ Carbon\Carbon::now()->year }} AtClub.
                 </div>
             </div>

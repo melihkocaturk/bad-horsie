@@ -332,7 +332,7 @@
         erişimine açabilir. Veri paylaşımı KVKK kişisel veri gizliliğini koruma hükümlerine uygun şekilde
         gerçekleştirilir.</p>
 
-    <h2 class="font-semibold text-l text-gray-800 my-3">Madde 5. At Club App KİŞİSEL VERİLERİNİZİ NASIL KORUYOR?</h2>
+    <h2 class="font-semibold text-l text-gray-800 my-3">Madde 5. At Club App kişisel verilerinizi nasıl koruyor?</h2>
 
     <p>At Club App ile paylaşılan kişisel veriler, At Club App gözetimi ve kontrolü altındadır. At Club App,
         yürürlükteki
@@ -356,7 +356,7 @@
 
     <p>5.5 Bu kapsamda veri işleme politikalarımızı her zaman güncellediğimizi bilginize sunarız.</p>
 
-    <h2 class="font-semibold text-l text-gray-800 my-3">Madde 6. KİŞİSEL VERİLERİNİZİN KORUNMASINA YÖNELİK HAKLARINIZ
+    <h2 class="font-semibold text-l text-gray-800 my-3">Madde 6. Kişisel verilerin korunmasına yönelik haklarınız
     </h2>
 
     <p>Bu Aydınlatma Metni’nin “Hak ve Talepleriniz İçin İletişim” bölümünde yer alan yöntemlerle Şirketimize
@@ -384,27 +384,28 @@
     <p>6.9 Kişisel verilerinizin ilgili mevzuata aykırı olarak işlenmesi sebebiyle zarara uğramanız hâlinde zararınızın
         giderilmesini talep etme haklarına sahipsiniz.</p>
 
-    <h2 class="font-semibold text-l text-gray-800 my-3">Madde 7. HAK VE TALEPLERİNİZ İÇİN İLETİŞİM</h2>
+    <h2 class="font-semibold text-l text-gray-800 my-3">Madde 7. Hak ve talepleriniz için iletişim</h2>
 
     <p>Kişisel verilerinizle ilgili sorularınızı ve taleplerinizi, Veri Sorumlusuna Başvuru Usul ve Esasları hakkında
         Tebliğ’de belirtilen şartlara uygun düzenlenmiş dilekçeyle aşağıdaki yöntemlerle iletebilirsiniz.</p>
 
-    <table class="table-auto border-collapse border border-slate-400 my-4">
+    <table class="table-auto border-collapse border border-slate-400 mb-3">
         <thead>
             <tr>
-                <th class="border border-slate-300">BAŞVURU YÖNTEMİ</th>
-                <th class="border border-slate-300">BAŞVURUNUN YAPILACAĞI ADRES</th>
+                <th class="border border-slate-300 p-2">BAŞVURU YÖNTEMİ</th>
+                <th class="border border-slate-300 p-2">BAŞVURUNUN YAPILACAĞI ADRES</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td class="border border-slate-300">Şahsen Yazılı Başvuru</td>
-                <td class="border border-slate-300">Ürünlü Mah. Ümit Sok. No:6 Nilüfer/Bursa</td>
+                <td class="border border-slate-300 p-2">Şahsen Yazılı Başvuru</td>
+                <td class="border border-slate-300 p-2">Ürünlü Mah. Ümit Sok. No:6 Nilüfer/Bursa</td>
             </tr>
             <tr>
-                <td class="border border-slate-300">Şirketimize daha önce bildirilen ve sistemde kayıtlı bulunan
+                <td class="border border-slate-300 p-2">Şirketimize daha önce bildirilen ve sistemde kayıtlı bulunan
                     elektronik posta adresinizden</td>
-                <td class="border border-slate-300">info@atclubapp.com</td>
+                <td class="border border-slate-300 p-2"><a href="mailto:info@atclubapp.com"
+                        class="underline text-blue-600">info@atclubapp.com</a></td>
             </tr>
         </tbody>
     </table>
@@ -423,10 +424,12 @@
         Verileri Koruma Kurulu tarafından belirlenen tarifedeki ücret talep edilebilecektir.</p>
 
 
-    <h2 class="font-semibold text-l text-gray-800 my-3">Madde 8. AYDINLATMA METNİ HAKKINDA</h2>
+    <h2 class="font-semibold text-l text-gray-800 my-3">Madde 8. Aydınlatma metni hakkında</h2>
 
     <p>At Club App işbu Kişisel Verilerin Korunması Hakkında Açıklama metnini yürürlükteki mevzuatta yapılabilecek
-        değişiklikler çerçevesinde her zaman güncelleme hakkını saklı tutar. Güncellenme Tarihi : 21/02/2024</p>
+        değişiklikler çerçevesinde her zaman güncelleme hakkını saklı tutar.</p>
+
+    <p>Güncellenme Tarihi : 21/02/2024</p>
 
 </body>
 

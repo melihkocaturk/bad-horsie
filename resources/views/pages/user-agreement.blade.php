@@ -26,7 +26,8 @@
 
     <h2 class="font-semibold text-l text-gray-800 mb-3">Madde 1. Taraflar</h2>
 
-    <p>İşbu Kullanıcı Sözleşmesi (“Sözleşme”), At Club App (“Şirket”) ile www.atclubapp.com adresinde yer alan siteye
+    <p>İşbu Kullanıcı Sözleşmesi (“Sözleşme”), At Club App (“Şirket”) ile <span class="italic">www.atclubapp.com</span>
+        adresinde yer alan siteye
         (“Site”) kullanıcı (“Kullanıcı(lar)”) olarak kaydolan kişi arasında akdedilmektedir. Sözleşme, Kullanıcı
         tarafından
         elektronik ortamda kabulü ile birlikte yürürlüğe girecek olup; taraflarca Sözleşme’de belirtilen usuller

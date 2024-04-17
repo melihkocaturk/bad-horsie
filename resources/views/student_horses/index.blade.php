@@ -11,7 +11,7 @@
                 <div class="max-w-none">
                     <section>
                         <x-link-button :href="route('horses.create')">
-                            Add New Horse
+                            {{ __('Add New Horse') }}
                         </x-link-button>
 
                         @if (count($horses) > 0)
@@ -35,7 +35,7 @@
                         @else
                             <div class="rounded-md border border-dashed border-slate-300 mt-6 p-8">
                                 <div class="text-center font-medium">
-                                    No horses yet.
+                                    {{ __('No horses yet.') }}
                                 </div>
                             </div>
                         @endif

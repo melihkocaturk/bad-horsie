@@ -18,7 +18,7 @@ class MemberController extends Controller
         if (! Gate::allows('store-member', $club)) {
             return redirect()->back()->with(
                 'error',
-                'You don\'t have permission.'
+                trans("You don't have permission.")
             );
         }
 
@@ -33,19 +33,19 @@ class MemberController extends Controller
         if (!$user) {
             return redirect()->back()->with(
                 'error',
-                'User not found.'
+                trans('User not found.')
             );
         }
 
         if ($club->members()->where('user_id', $user->id)->exists()) {
             return redirect()->back()->with(
                 'error',
-                'User is already a member.'
+                trans('User is already a member.')
             );
         } elseif (DB::table('club_user')->where('user_id', $user->id)->count() > 0) {
             return redirect()->back()->with(
                 'error',
-                'User is a member of another club.'
+                trans('User is a member of another club.')
             );
         } else {
             $club->members()->attach($user);
@@ -53,7 +53,7 @@ class MemberController extends Controller
 
         return redirect()->back()->with(
             'success',
-            'New member added.'
+            trans('New member added.')
         );
     }
 
@@ -65,7 +65,7 @@ class MemberController extends Controller
         if (! Gate::allows('destroy-member', $club)) {
             return redirect()->back()->with(
                 'error',
-                'You don\'t have permission.'
+                trans("You don't have permission.")
             );
         }
 
@@ -73,7 +73,7 @@ class MemberController extends Controller
 
         return redirect()->back()->with(
             'success',
-            'Member removed.'
+            trans('Member removed.')
         );
     }
 }

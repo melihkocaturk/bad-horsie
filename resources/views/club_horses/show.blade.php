@@ -7,9 +7,9 @@
 
     <!-- Breadcrumbs -->
     <x-breadcrumbs :links="[
-        'Clubs' => route('clubs.index'),
+        __('Clubs') => route('clubs.index'),
         $club->name => route('clubs.show', $club),
-        'Horses' => route('clubs.horses.index', $club),
+        __('Horses') => route('clubs.horses.index', $club),
     ]" />
 
     <div class="py-6">
@@ -18,7 +18,7 @@
                 <div class="max-w-none">
                     <section>
                         <x-link-button :href="route('clubs.horses.edit', ['club' => $club, 'horse' => $horse])">
-                            Edit
+                            {{ __('Edit') }}
                         </x-link-button>
 
                         <div class="grid sm:grid-cols-2 grid-cols-1 gap-6 mt-6">
@@ -34,23 +34,23 @@
                                 <table class="table-fixed min-w-full mt-6">
                                     <tbody>
                                         <tr class="bg-slate-100">
-                                            <td class="px-6 py-3 font-semibold">Gender:</td>
+                                            <td class="px-6 py-3 font-semibold">{{ __('Gender') }}:</td>
                                             <td class="px-6 py-3">{{ \App\Models\Horse::$gender[$horse->gender] }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="px-6 py-3 font-semibold">Race:</td>
+                                            <td class="px-6 py-3 font-semibold">{{ __('Race') }}:</td>
                                             <td class="px-6 py-3">{{ $horse->race }}</td>
                                         </tr>
                                         <tr class="bg-slate-100">
-                                            <td class="px-6 py-3 font-semibold">Color:</td>
+                                            <td class="px-6 py-3 font-semibold">{{ __('Color') }}:</td>
                                             <td class="px-6 py-3">{{ $horse->color }}</td>
                                         </tr>
                                         <tr>
-                                            <td class="px-6 py-3 font-semibold">Height:</td>
+                                            <td class="px-6 py-3 font-semibold">{{ __('Height') }}:</td>
                                             <td class="px-6 py-3">{{ $horse->height }} cm</td>
                                         </tr>
                                         <tr class="bg-slate-100">
-                                            <td class="px-6 py-3 font-semibold">FEI ID:</td>
+                                            <td class="px-6 py-3 font-semibold">{{ __('FEI ID') }}:</td>
                                             <td class="px-6 py-3">{{ $horse->fei_id }}</td>
                                         </tr>
                                     </tbody>

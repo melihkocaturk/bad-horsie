@@ -6,7 +6,7 @@
     </x-slot>
 
     <!-- Breadcrumbs -->
-    <x-breadcrumbs :links="['Clubs' => route('clubs.index')]" />
+    <x-breadcrumbs :links="[__('Clubs') => route('clubs.index')]" />
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
@@ -14,15 +14,15 @@
                 <div class="max-w-none">
                     <section>
                         <x-link-button :href="route('clubs.edit', $club)">
-                            Edit
+                            {{ __('Edit') }}
                         </x-link-button>
 
                         <x-link-button :href="route('clubs.lessons.index', $club)">
-                            Lessons
+                            {{ __('Lessons') }}
                         </x-link-button>
 
                         <x-link-button :href="route('clubs.horses.index', $club)">
-                            Horses
+                            {{ __('Horses') }}
                         </x-link-button>
 
                         <div class="h-96 mt-6">
@@ -40,33 +40,33 @@
                             <table class="table-fixed mt-6">
                                 <tbody>
                                     <tr>
-                                        <td class="pr-2 py-1 font-semibold">Address:</td>
+                                        <td class="pr-2 py-1 font-semibold">{{ __('Address') }}:</td>
                                         <td class="px-2 py-1">{{ $club->address }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="pr-2 py-1 font-semibold">Phone:</td>
+                                        <td class="pr-2 py-1 font-semibold">{{ __('Phone') }}:</td>
                                         <td class="px-2 py-1"><a href="tel:{{ $club->email }}">{{ $club->phone }}</a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="pr-2 py-1 font-semibold">E-mail:</td>
+                                        <td class="pr-2 py-1 font-semibold">{{ __('E-mail') }}:</td>
                                         <td class="px-2 py-1"><a
                                                 href="mailto:{{ $club->email }}">{{ $club->email }}</a></td>
                                     </tr>
                                     <tr>
-                                        <td class="pr-2 py-1 font-semibold">Web:</td>
+                                        <td class="pr-2 py-1 font-semibold">{{ __('Web') }}:</td>
                                         <td class="px-2 py-1"><a href="{{ $club->web }}"
                                                 target="blank">{{ $club->web }}</a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="pr-2 py-1 font-semibold">Coordinates:</td>
+                                        <td class="pr-2 py-1 font-semibold">{{ __('Coordinates') }}:</td>
                                         <td class="px-2 py-1"><a href="{{ $club->coordinates }}"
                                                 target="blank">{{ $club->coordinates }}</a>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="pr-2 py-1 font-semibold">Tags:</td>
+                                        <td class="pr-2 py-1 font-semibold">{{ __('Tags') }}:</td>
                                         <td class="px-2 py-1">
                                             @php
                                                 $clubTags = [];
@@ -78,7 +78,7 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="pr-2 py-1 font-semibold">Türkiye Binicilik Federasyonu Linki:</td>
+                                        <td class="pr-2 py-1 font-semibold">{{ __('Turkish Riding Federation Link') }}:</td>
                                         <td class="px-2 py-1">
                                             {{ $club->tbf_link }}
                                         </td>
@@ -89,7 +89,7 @@
 
                         <div class="mt-6">
                             <h4 class="text-lg font-bold text-gray-800">
-                                Members
+                                {{ __('Members') }}
                             </h4>
 
                             @if (count($club->members) > 0)
@@ -122,7 +122,7 @@
                                                             $club,
                                                             'member' => $member->id,
                                                         ])">
-                                                            Lesson Rights
+                                                            {{ __('Lesson Rights') }}
                                                         </x-link-button>
                                                     @endif
                                                 </td>
@@ -133,7 +133,7 @@
                             @else
                                 <div class="rounded-md border border-dashed border-slate-300 mt-6 p-8">
                                     <div class="text-center font-medium">
-                                        No members yet.
+                                        {{ __('No members yet.') }}
                                     </div>
                                 </div>
                             @endif
@@ -141,7 +141,7 @@
 
                         <div class="mt-6">
                             <h4 class="text-lg font-bold text-gray-800">
-                                Horses
+                                {{ __('Horses') }}
                             </h4>
 
                             @if (count($club->horses) > 0)
@@ -174,7 +174,7 @@
                             @else
                                 <div class="rounded-md border border-dashed border-slate-300 mt-6 p-8">
                                     <div class="text-center font-medium">
-                                        No members yet.
+                                        {{ __('No horses yet.') }}
                                     </div>
                                 </div>
                             @endif

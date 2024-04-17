@@ -20,17 +20,23 @@
         class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-gray-100 selection:bg-red-500 selection:text-white">
         @if (Route::has('login'))
             <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+                @foreach ($available_locales as $locale_name => $available_locale)
+                    @if ($available_locale != $current_locale)
+                        <a href="language/{{ $available_locale }}"
+                            class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{ $locale_name }}</a>
+                    @endif
+                @endforeach
+
                 @auth
                     <a href="{{ url('/dashboard') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
+                        class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{ __('Dashboard') }}</a>
                 @else
                     <a href="{{ route('login') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log
-                        in</a>
+                        class="ml-4 font-semibold text-gray-600 hover:text-gray-900 focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">{{ __('Log in') }}</a>
 
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
-                            class="ml-4 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Register</a>
+                            class="ml-4 focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-semibold rounded-lg text-sm px-5 py-2.5 me-2 mb-2">{{ __('Register') }}</a>
                     @endif
                 @endauth
             </div>
@@ -46,8 +52,7 @@
                     <a href="{{ route('register') }}"
                         class="scale-100 p-6 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <div class="w-full text-center">
-                            <div
-                                class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
+                            <div class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" class="w-7 h-7 stroke-red-500">
                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -67,8 +72,7 @@
                     <a href="{{ route('register') }}"
                         class="scale-100 p-6 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <div class="w-full text-center">
-                            <div
-                                class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
+                            <div class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" class="w-7 h-7 stroke-red-500">
                                     <path stroke-linecap="round"
@@ -90,8 +94,7 @@
                     <a href="{{ route('register') }}"
                         class="scale-100 p-6 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <div class="w-full text-center">
-                            <div
-                                class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
+                            <div class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" class="w-7 h-7 stroke-red-500">
                                     <path stroke-linecap="round"
@@ -113,8 +116,7 @@
                     <div
                         class="scale-100 p-6 bg-white from-gray-700/50 via-transparent rounded-lg shadow-2xl shadow-gray-500/20 flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
                         <div class="w-full text-center">
-                            <div
-                                class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
+                            <div class="mx-auto h-16 w-16 bg-red-50 flex items-center justify-center rounded-full">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" class="w-7 h-7 stroke-red-500">
                                     <path fill-rule="evenodd"

@@ -7,7 +7,7 @@
 
     <!-- Breadcrumbs -->
     <x-breadcrumbs :links="[
-        'Horses' => route('horses.index'),
+        __('Horses') => route('horses.index'),
         $horse->name => route('horses.show', $horse),
     ]" />
 

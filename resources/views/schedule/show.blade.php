@@ -21,7 +21,7 @@
                                 <tr>
                                     @for ($i = 0; $i <= 6; $i++)
                                         <th class="px-4 py-2 bg-slate-100 border border-slate-300">
-                                            {{ date('D', strtotime("$i day")) }}
+                                            {{ __(date('D', strtotime("$i day"))) }}
                                         </th>
                                     @endfor
                                 </tr>

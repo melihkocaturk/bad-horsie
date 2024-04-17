@@ -46,7 +46,7 @@ class StudentHorseController extends Controller
         auth()->user()->horses()->create($data);
 
         return redirect()->route('horses.index')
-            ->with('success', 'Horse successfully created.');
+            ->with('success', trans('Horse successfully created.'));
     }
 
     /**
@@ -79,7 +79,7 @@ class StudentHorseController extends Controller
         $horse->update($data);
 
         return redirect()->route('horses.index')
-            ->with('success', 'Horse successfully updated.');
+            ->with('success', trans('Horse successfully updated.'));
     }
 
     /**
@@ -90,6 +90,6 @@ class StudentHorseController extends Controller
         $horse->delete();
 
         return redirect()->route('horses.index')
-            ->with('success', 'Horse removed.');
+            ->with('success', trans('Horse removed.'));
     }
 }

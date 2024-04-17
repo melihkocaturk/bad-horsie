@@ -6,7 +6,7 @@
     </x-slot>
 
     <!-- Breadcrumbs -->
-    <x-breadcrumbs :links="['Lessons' => route('trainer-lessons.index')]" />
+    <x-breadcrumbs :links="[__('Lessons') => route('trainer-lessons.index')]" />
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
@@ -22,19 +22,19 @@
                         <table class="table-fixed min-w-full mt-6">
                             <tbody>
                                 <tr class="bg-slate-100">
-                                    <td class="px-6 py-3 font-semibold">Club:</td>
+                                    <td class="px-6 py-3 font-semibold">{{ __('Club') }}:</td>
                                     <td class="px-6 py-3">{{ $lesson->club->name }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-6 py-3 font-semibold">Start:</td>
+                                    <td class="px-6 py-3 font-semibold">{{ __('Start') }}:</td>
                                     <td class="px-6 py-3">{{ $lesson->start }}</td>
                                 </tr>
                                 <tr class="bg-slate-100">
-                                    <td class="px-6 py-3 font-semibold">End:</td>
+                                    <td class="px-6 py-3 font-semibold">{{ __('End') }}:</td>
                                     <td class="px-6 py-3">{{ $lesson->end }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="px-6 py-3 font-semibold">Student:</td>
+                                    <td class="px-6 py-3 font-semibold">{{ __('Student') }}:</td>
                                     <td class="px-6 py-3">
                                         <span class="float-left">{{ $lesson->student->name }} &nbsp;</span>
                                         @if ($lesson->student_confirmation)
@@ -43,7 +43,7 @@
                                     </td>
                                 </tr>
                                 <tr class="bg-slate-100">
-                                    <td class="px-6 py-3 font-semibold">Confirmation:</td>
+                                    <td class="px-6 py-3 font-semibold">{{ __('Confirmation') }}:</td>
                                     <td class="px-6 py-3">
                                         @if (isset($lesson->trainer_confirmation))
                                             @if ($lesson->trainer_confirmation)
@@ -55,19 +55,19 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="px-6 py-3 font-semibold">Reason For Reject:</td>
+                                    <td class="px-6 py-3 font-semibold">{{ __('Reason For Reject') }}:</td>
                                     <td class="px-6 py-3">
                                         {{ $lesson->reason_for_reject }}
                                     </td>
                                 </tr>
                                 <tr class="bg-slate-100">
-                                    <td class="px-6 py-3 font-semibold">Grade:</td>
+                                    <td class="px-6 py-3 font-semibold">{{ __('Grade') }}:</td>
                                     <td class="px-6 py-3">
                                         {{ $lesson->grade }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="px-6 py-3 font-semibold">Comment:</td>
+                                    <td class="px-6 py-3 font-semibold">{{ __('Comment') }}:</td>
                                     <td class="px-6 py-3">
                                         {{ $lesson->comment }}
                                     </td>

@@ -7,7 +7,7 @@
 
     <!-- Breadcrumbs -->
     <x-breadcrumbs :links="[
-        'Clubs' => route('clubs.index'),
+        __('Clubs') => route('clubs.index'),
         $club->name => route('clubs.show', $club),
     ]" />
 

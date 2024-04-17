@@ -7,7 +7,7 @@
 
     <!-- Breadcrumbs -->
     <x-breadcrumbs :links="[
-        'Clubs' => route('clubs.index'),
+        __('Clubs') => route('clubs.index'),
         $club->name => route('clubs.show', $club),
     ]" />
 
@@ -17,7 +17,7 @@
                 <div class="max-w-none">
                     <section>
                         <x-link-button :href="route('clubs.lessons.create', $club)">
-                            Add New Lesson
+                            {{ __('Add New Lesson') }}
                         </x-link-button>
 
                         @if (count($club->lessons) > 0)

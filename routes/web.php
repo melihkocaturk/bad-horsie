@@ -25,6 +25,12 @@ use TCG\Voyager\Facades\Voyager;
 |
 */
 
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
+
 Route::get('/', function () {
     return view('welcome');
 });

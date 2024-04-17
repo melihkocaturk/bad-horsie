@@ -7,9 +7,9 @@
 
     <!-- Breadcrumbs -->
     <x-breadcrumbs :links="[
-        'Clubs' => route('clubs.index'),
+        __('Clubs') => route('clubs.index'),
         $club->name => route('clubs.show', $club),
-        'Horses' => route('clubs.horses.index', $club),
+        __('Horses') => route('clubs.horses.index', $club),
     ]" />
 
     <div class="py-6">

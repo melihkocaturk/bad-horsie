@@ -11,7 +11,7 @@
                 <div class="max-w-none">
                     <section>
                         <x-link-button :href="route('clubs.create')">
-                            Add New Club
+                            {{ __('Add New Club') }}
                         </x-link-button>
 
                         @if (count($clubs) > 0)
@@ -32,7 +32,7 @@
                         @else
                             <div class="rounded-md border border-dashed border-slate-300 mt-6 p-8">
                                 <div class="text-center font-medium">
-                                    No clubs yet.
+                                    {{ __('No clubs yet.') }}
                                 </div>
                             </div>
                         @endif

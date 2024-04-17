@@ -6,7 +6,7 @@
     </x-slot>
 
     <!-- Breadcrumbs -->
-    <x-breadcrumbs :links="['Events' => route('events.index')]" />
+    <x-breadcrumbs :links="[__('Events') => route('events.index')]" />
 
     <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">

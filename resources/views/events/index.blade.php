@@ -11,7 +11,7 @@
                 <div class="max-w-none">
                     <section>
                         <x-link-button :href="route('events.create')">
-                            Add New Event
+                            {{ __('Add New Event') }}
                         </x-link-button>
 
                         @if (count($events) > 0)
@@ -43,7 +43,7 @@
                         @else
                             <div class="rounded-md border border-dashed border-slate-300 mt-6 p-8">
                                 <div class="text-center font-medium">
-                                    No events yet.
+                                    {{ __('No events yet.') }}
                                 </div>
                             </div>
                         @endif

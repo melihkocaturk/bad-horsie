@@ -34,7 +34,7 @@
             <div class="my-3 max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <div role="alert"
                     class="rounded-lg border border-green-700 bg-green-100 p-2 sm:p-4 text-green-700 opacity-75">
-                    <p class="font-bold">Success!</p>
+                    <p class="font-bold">{{ __('Success!') }}</p>
                     <p>{{ session('success') }}</p>
                 </div>
             </div>
@@ -44,7 +44,7 @@
             <div class="my-3 max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                 <div role="alert"
                     class="rounded-lg border border-red-700 bg-red-100 p-2 sm:p-4 text-red-700 opacity-75">
-                    <p class="font-bold">Error!</p>
+                    <p class="font-bold">{{ __('Error!') }}</p>
                     <p>{{ session('error') }}</p>
                 </div>
             </div>

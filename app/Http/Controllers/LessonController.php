@@ -44,7 +44,7 @@ class LessonController extends Controller
         $club->lessons()->create($request->validated());
 
         return redirect()->route('clubs.lessons.index', $club)
-            ->with('success', 'Lesson successfully created.');
+            ->with('success', trans('Lesson successfully created.'));
     }
 
     /**
@@ -78,7 +78,7 @@ class LessonController extends Controller
         $lesson->update($request->validated());
 
         return redirect()->route('clubs.lessons.index', $club)
-            ->with('success', 'Lesson removed.');
+            ->with('success', trans('Lesson updated.'));
     }
 
     /**
@@ -89,6 +89,6 @@ class LessonController extends Controller
         $lesson->delete();
 
         return redirect()->route('clubs.lessons.index', $club)
-            ->with('success', 'Lesson removed.');
+            ->with('success', trans('Lesson removed.'));
     }
 }

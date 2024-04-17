@@ -21,14 +21,14 @@ class LessonRightController extends Controller
         if (!$user) {
             return redirect()->back()->with(
                 'error',
-                'User not found.'
+                trans('User not found.')
             );
         }
 
         if (!$club->members()->find($user)) {
             return redirect()->back()->with(
                 'error',
-                'User not a club member.'
+                trans('User not a club member.')
             );
         }
 
@@ -60,7 +60,7 @@ class LessonRightController extends Controller
         if (! Gate::allows('store-lesson-right', $club)) {
             return redirect()->back()->with(
                 'error',
-                'You don\'t have permission.'
+                trans("You don't have permission.")
             );
         }
 
@@ -90,6 +90,6 @@ class LessonRightController extends Controller
         ]);
 
         return redirect()->route('clubs.show', $club)
-            ->with('success', 'Lesson right successfully created.');
+            ->with('success', trans('Lesson right successfully created.'));
     }
 }

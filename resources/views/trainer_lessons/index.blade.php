@@ -46,7 +46,7 @@
                         @else
                             <div class="rounded-md border border-dashed border-slate-300 mt-6 p-8">
                                 <div class="text-center font-medium">
-                                    No lessons yet.
+                                    {{ __('No lessons yet.') }}
                                 </div>
                             </div>
                         @endif

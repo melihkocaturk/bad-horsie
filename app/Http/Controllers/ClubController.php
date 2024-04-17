@@ -55,7 +55,7 @@ class ClubController extends Controller
         }
 
         return redirect()->route('clubs.index')
-            ->with('success', 'Club successfully created.');
+            ->with('success', trans('Club successfully created.'));
     }
 
     /**
@@ -101,7 +101,7 @@ class ClubController extends Controller
         }
         
         return redirect()->route('clubs.show', ['club' => $club])
-            ->with('success', 'Club successfully updated.');
+            ->with('success', trans('Club successfully updated.'));
     }
 
     /**
@@ -112,6 +112,6 @@ class ClubController extends Controller
         $club->delete();
 
         return redirect()->route('clubs.index')
-            ->with('success', 'Club removed.');
+            ->with('success', trans('Club removed.'));
     }
 }

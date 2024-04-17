@@ -50,7 +50,7 @@ class TrainerLessonController extends Controller
         if (! Gate::allows('edit-trainer-lesson', $lesson)) {
             return redirect()->back()->with(
                 'error',
-                'You don\'t have permission.'
+                trans("You don't have permission.")
             );
         }
 
@@ -69,7 +69,7 @@ class TrainerLessonController extends Controller
         if (! Gate::allows('update-trainer-lesson', $lesson)) {
             return redirect()->back()->with(
                 'error',
-                'You don\'t have permission.'
+                trans("You don't have permission.")
             );
         }
 
@@ -89,7 +89,7 @@ class TrainerLessonController extends Controller
         $lesson->update($validated);
 
         return redirect()->route('trainer-lessons.edit', ['lesson' => $lesson])
-            ->with('success', 'Lesson successfully updated.');
+            ->with('success', trans('Lesson successfully updated.'));
     }
 
     /**

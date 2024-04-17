@@ -56,7 +56,7 @@ class StudentLessonController extends Controller
         if (! Gate::allows('show-student-lesson', $lesson)) {
             return redirect()->back()->with(
                 'error',
-                'You don\'t have permission.'
+                trans("You don't have permission.")
             );
         }
 
@@ -79,7 +79,7 @@ class StudentLessonController extends Controller
         if (! Gate::allows('update-student-lesson', $lesson)) {
             return redirect()->back()->with(
                 'error',
-                'You don\'t have permission.'
+                trans("You don't have permission.")
             );
         }
 
@@ -99,12 +99,12 @@ class StudentLessonController extends Controller
         } else {
             return redirect()->back()->with(
                 'error',
-                'You do not have the right to lesson.'
+                trans('You do not have the right to lesson.')
             );
         }
 
         return redirect()->route('student-lessons.index')
-            ->with('success', 'Lesson successfully updated.');
+            ->with('success', trans('Lesson successfully updated.'));
     }
 
     /**

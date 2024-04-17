@@ -50,7 +50,7 @@ class ClubHorseController extends Controller
         $club->horses()->create($data);
 
         return redirect()->route('clubs.horses.index', $club)
-            ->with('success', 'Horse successfully created.');
+            ->with('success', trans('Horse successfully created.'));
     }
 
     /**
@@ -89,7 +89,7 @@ class ClubHorseController extends Controller
         $horse->update($data);
 
         return redirect()->route('clubs.horses.index', $club)
-            ->with('success', 'Horse successfully updated.');
+            ->with('success', trans('Horse successfully updated.'));
     }
 
     /**
@@ -100,6 +100,6 @@ class ClubHorseController extends Controller
         $horse->delete();
 
         return redirect()->route('clubs.horses.index', $club)
-            ->with('success', 'Horse removed.');
+            ->with('success', trans('Horse removed.'));
     }
 }

@@ -27,7 +27,7 @@
 
         <!-- Email -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
+            <x-input-label for="email" :value="__('E-mail')" />
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)"
                 required />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
@@ -65,7 +65,7 @@
         @if (in_array($user->type, ['student', 'trainer']))
             <!-- Türkiye Binicilik Federasyonu -->
             <div>
-                <x-input-label for="tbf_link" :value="__('Türkiye Binicilik Federasyonu Linki')" />
+                <x-input-label for="tbf_link" :value="__('Turkish Riding Federation Link')" />
                 <x-text-input id="tbf_link" name="tbf_link" type="text" class="mt-1 block w-full"
                     :value="old('tbf_link', $user->userProfile ? $user->userProfile->tbf_link : '')" />
                 <x-input-error class="mt-2" :messages="$errors->get('tbf_link')" />

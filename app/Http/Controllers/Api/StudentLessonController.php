@@ -17,7 +17,7 @@ class StudentLessonController extends Controller
     public function index(Request $request)
     {
         return LessonResource::collection(
-            $request->user()->studentLessons()->paginate(10)
+            $request->user()->studentLessons()->orderBy('start', 'asc')->paginate(10)
         );
     }
 

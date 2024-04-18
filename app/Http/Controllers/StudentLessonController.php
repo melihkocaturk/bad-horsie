@@ -26,7 +26,7 @@ class StudentLessonController extends Controller
         }
 
         return view('student_lessons.index', [
-            'lessons' => $user->studentLessons,
+            'lessons' => $user->studentLessons()->orderBy('start', 'asc')->get(),
             'membership' => $membership,
             'lessonRight' => $lessonRight
         ]);

@@ -33,7 +33,7 @@
                                             @if (
                                                     $event->start >=
                                                         Carbon\Carbon::now()->addDays($i)->toDateString() &&
-                                                    $event->end <
+                                                    $event->start <
                                                         Carbon\Carbon::now()->addDays($i + 1)->toDateString()
                                                 )
                                                 <div

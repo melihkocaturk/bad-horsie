@@ -34,12 +34,55 @@
                                                 <a href="{{ route('events.edit', $event) }}"
                                                     class="text-blue-600">{{ $event->name }}</a>
                                             </td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ Carbon\Carbon::parse($event->start)->format('d-m-Y H:i') }}</td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ Carbon\Carbon::parse($event->end)->format('d-m-Y H:i')}}</td>
+                                            <td class="px-4 py-2 border border-slate-200">
+                                                {{ Carbon\Carbon::parse($event->start)->format('d-m-Y H:i') }}</td>
+                                            <td class="px-4 py-2 border border-slate-200">
+                                                {{ Carbon\Carbon::parse($event->end)->format('d-m-Y H:i') }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                        @else
+                            <div class="rounded-md border border-dashed border-slate-300 mt-6 p-8">
+                                <div class="text-center font-medium">
+                                    {{ __('No events yet.') }}
+                                </div>
+                            </div>
+                        @endif
+                        
+                        <h2 class="text-lg font-medium text-gray-900 mt-6">
+                            {{ __('Old Events') }}
+                        </h2>
+
+                        @if (count($old_events) > 0)
+                            <table class="table-fixed w-full border border-slate-300 my-6">
+                                <thead>
+                                    <tr>
+                                        <th class="px-4 py-2 bg-slate-100 border border-slate-300">{{ __('Event') }}
+                                        </th>
+                                        <th class="px-4 py-2 bg-slate-100 border border-slate-300">{{ __('Start') }}
+                                        </th>
+                                        <th class="px-4 py-2 bg-slate-100 border border-slate-300">{{ __('End') }}
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach ($old_events as $event)
+                                        <tr>
+                                            <td class="px-4 py-2 border border-slate-200">
+                                                <a href="{{ route('events.edit', $event) }}"
+                                                    class="text-blue-600">{{ $event->name }}</a>
+                                            </td>
+                                            <td class="px-4 py-2 border border-slate-200">
+                                                {{ Carbon\Carbon::parse($event->start)->format('d-m-Y H:i') }}</td>
+                                            <td class="px-4 py-2 border border-slate-200">
+                                                {{ Carbon\Carbon::parse($event->end)->format('d-m-Y H:i') }}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            {{ $old_events->links() }}
                         @else
                             <div class="rounded-md border border-dashed border-slate-300 mt-6 p-8">
                                 <div class="text-center font-medium">

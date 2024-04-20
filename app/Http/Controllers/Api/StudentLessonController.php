@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\LessonResource;
 use App\Models\Lesson;
 use App\Models\LessonRight;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -16,9 +17,14 @@ class StudentLessonController extends Controller
      */
     public function index(Request $request)
     {
-        return LessonResource::collection(
-            $request->user()->studentLessons()->orderBy('start', 'asc')->paginate(10)
-        );
+        $start = Carbon::today();
+        
+        $lessons = $request->user()->studentLessons()
+            ->where('start', '>=', $start)
+            ->orderBy('start', 'asc')
+            ->paginate(10);
+
+        return LessonResource::collection($lessons);
     }
 
     /**

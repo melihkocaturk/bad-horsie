@@ -7,6 +7,7 @@ use App\Http\Requests\LessonRequest;
 use App\Http\Resources\LessonResource;
 use App\Models\Club;
 use App\Models\Lesson;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -32,9 +33,14 @@ class LessonController extends Controller
             ], status: 404);
         }
 
-        return LessonResource::collection(
-            $club->lessons()->orderBy('id', 'desc')->paginate(10)
-        );
+        $start = Carbon::today();
+        
+        $lessons = $club->lessons()
+            ->where('start', '>=', $start)
+            ->orderBy('start', 'asc')
+            ->paginate(10);
+
+        return LessonResource::collection($lessons);
     }
 
     /**

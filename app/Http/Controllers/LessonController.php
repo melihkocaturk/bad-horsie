@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\LessonRequest;
 use App\Models\Club;
 use App\Models\Lesson;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LessonController extends Controller
@@ -17,11 +18,24 @@ class LessonController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(int $id)
+    public function index(Club $club)
     {
+        $start = Carbon::today();
+
+        $lessons = $club->lessons()
+            ->where('start', '>=', $start)
+            ->orderBy('start', 'asc')
+            ->get();
+
+        $old_lessons = $club->lessons()
+            ->where('start', '<', $start)
+            ->orderBy('start', 'asc')
+            ->paginate(10);
+
         return view('lessons.index', [
-            'club' => Club::with('lessons', 'lessons.trainer', 'lessons.student')
-                ->findOrFail($id),
+            'club' => $club,
+            'lessons' => $lessons,
+            'old_lessons' => $old_lessons
         ]);
     }
 

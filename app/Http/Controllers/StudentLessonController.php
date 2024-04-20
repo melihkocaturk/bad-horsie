@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lesson;
 use App\Models\LessonRight;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -25,8 +26,21 @@ class StudentLessonController extends Controller
             ])->first();
         }
 
+        $start = Carbon::today();
+
+        $lessons = $user->studentLessons()
+            ->where('start', '>=', $start)
+            ->orderBy('start', 'asc')
+            ->get();
+
+        $old_lessons = $user->studentLessons()
+            ->where('start', '<', $start)
+            ->orderBy('start', 'asc')
+            ->paginate(10);
+
         return view('student_lessons.index', [
-            'lessons' => $user->studentLessons()->orderBy('start', 'asc')->get(),
+            'lessons' => $lessons,
+            'old_lessons' => $old_lessons,
             'membership' => $membership,
             'lessonRight' => $lessonRight
         ]);

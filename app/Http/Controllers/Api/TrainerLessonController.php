@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\LessonResource;
 use App\Models\Lesson;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -15,9 +16,14 @@ class TrainerLessonController extends Controller
      */
     public function index(Request $request)
     {
-        return LessonResource::collection(
-            $request->user()->trainerLessons()->paginate(10)
-        );
+        $start = Carbon::today();
+
+        $lessons = $request->user()->trainerLessons()
+            ->where('start', '>=', $start)
+            ->orderBy('start', 'asc')
+            ->paginate(10);
+
+        return LessonResource::collection($lessons);
     }
 
     /**

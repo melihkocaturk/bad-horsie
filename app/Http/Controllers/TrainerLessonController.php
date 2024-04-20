@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lesson;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,8 +14,21 @@ class TrainerLessonController extends Controller
      */
     public function index()
     {
+        $start = Carbon::today();
+
+        $lessons = auth()->user()->trainerLessons()
+            ->where('start', '>=', $start)
+            ->orderBy('start', 'asc')
+            ->get();
+
+        $old_lessons = auth()->user()->trainerLessons()
+            ->where('start', '<', $start)
+            ->orderBy('start', 'asc')
+            ->paginate(10);
+            
         return view('trainer_lessons.index', [
-            'lessons' => auth()->user()->trainerLessons
+            'lessons' => $lessons,
+            'old_lessons' => $old_lessons
         ]);
     }
 

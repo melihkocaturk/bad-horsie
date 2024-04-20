@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EventRequest;
 use App\Models\Event;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -18,8 +19,21 @@ class EventController extends Controller
      */
     public function index()
     {
+        $start = Carbon::today();
+
+        $events = Event::where('start', '>=', $start)
+            ->where('user_id', auth()->user()->id)
+            ->orderBy('start', 'asc')
+            ->get();
+
+        $old_events = Event::where('start', '<', $start)
+            ->where('user_id', auth()->user()->id)
+            ->orderBy('start', 'asc')
+            ->paginate(1);
+        
         return view('events.index', [
-            'events' => auth()->user()->events()->orderBy('start', 'asc')->get()
+            'events' => $events,
+            'old_events' => $old_events
         ]);
     }
 

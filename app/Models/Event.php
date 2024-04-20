@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Event extends Model
 {
+    protected $dateFormat = 'd/m/Y';
+    
     use HasFactory;
 
     protected $fillable = [

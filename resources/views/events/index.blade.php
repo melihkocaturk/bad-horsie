@@ -34,8 +34,8 @@
                                                 <a href="{{ route('events.edit', $event) }}"
                                                     class="text-blue-600">{{ $event->name }}</a>
                                             </td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $event->start }}</td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $event->end }}</td>
+                                            <td class="px-4 py-2 border border-slate-200">{{ Carbon\Carbon::parse($event->start)->format('d-m-Y H:i') }}</td>
+                                            <td class="px-4 py-2 border border-slate-200">{{ Carbon\Carbon::parse($event->end)->format('d-m-Y H:i')}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

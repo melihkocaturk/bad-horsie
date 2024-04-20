@@ -44,8 +44,8 @@
                                                 <a href="{{ route('clubs.lessons.show', ['club' => $club, 'lesson' => $lesson]) }}"
                                                     class="text-blue-600">{{ $lesson->name }}</a>
                                             </td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $lesson->start }}</td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $lesson->end }}</td>
+                                            <td class="px-4 py-2 border border-slate-200">{{ Carbon\Carbon::parse($lesson->start)->format('d-m-Y H:i') }}</td>
+                                            <td class="px-4 py-2 border border-slate-200">{{ Carbon\Carbon::parse($lesson->end)->format('d-m-Y H:i') }}</td>
                                             <td class="px-4 py-2 border border-slate-200">
                                                 <span class="float-left">{{ $lesson->trainer->name }} &nbsp;</span>
                                                 @if (isset($lesson->trainer_confirmation))

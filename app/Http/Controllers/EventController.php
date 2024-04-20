@@ -19,7 +19,7 @@ class EventController extends Controller
     public function index()
     {
         return view('events.index', [
-            'events' => auth()->user()->events
+            'events' => auth()->user()->events()->orderBy('start', 'asc')->get()
         ]);
     }
 

@@ -21,7 +21,7 @@ class EventController extends Controller
     public function index(Request $request)
     {
         return EventResource::collection(
-            $request->user()->events()->orderBy('start', 'desc')->paginate(10)
+            $request->user()->events()->orderBy('start', 'asc')->paginate(10)
         );
     }
 

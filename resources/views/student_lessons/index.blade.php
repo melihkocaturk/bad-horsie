@@ -51,8 +51,8 @@
                                                 <a href="{{ route('student-lessons.show', $lesson) }}"
                                                     class="text-blue-600">{{ $lesson->name }}</a>
                                             </td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $lesson->start }}</td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $lesson->end }}</td>
+                                            <td class="px-4 py-2 border border-slate-200">{{ Carbon\Carbon::parse($lesson->start)->format('d-m-Y H:i') }}</td>
+                                            <td class="px-4 py-2 border border-slate-200">{{ Carbon\Carbon::parse($lesson->end)->format('d-m-Y H:i') }}</td>
                                             <td class="px-4 py-2 border border-slate-200">{{ $lesson->trainer->name }}
                                             </td>
                                             <td class="px-4 py-2 border border-slate-200 relative text-center">

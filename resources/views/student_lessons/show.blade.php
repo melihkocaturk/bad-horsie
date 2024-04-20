@@ -27,11 +27,11 @@
                                 </tr>
                                 <tr>
                                     <td class="px-6 py-3 font-semibold">{{ __('Start') }}:</td>
-                                    <td class="px-6 py-3">{{ $lesson->start }}</td>
+                                    <td class="px-6 py-3">{{ Carbon\Carbon::parse($lesson->start)->format('d-m-Y H:i') }}</td>
                                 </tr>
                                 <tr class="bg-slate-100">
                                     <td class="px-6 py-3 font-semibold">{{ __('End') }}:</td>
-                                    <td class="px-6 py-3">{{ $lesson->end }}</td>
+                                    <td class="px-6 py-3">{{ Carbon\Carbon::parse($lesson->end)->format('d-m-Y H:i') }}</td>
                                 </tr class="bg-slate-100">
                                 <tr>
                                     <td class="px-6 py-3 font-semibold">{{ __('Confirmation') }}:</td>

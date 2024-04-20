@@ -35,8 +35,8 @@
                                                     class="text-blue-600">{{ $lesson->name }}</a>
                                             </td>
                                             <td class="px-4 py-2 border border-slate-200">{{ $lesson->club->name }}</td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $lesson->start }}</td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $lesson->end }}</td>
+                                            <td class="px-4 py-2 border border-slate-200">{{ Carbon\Carbon::parse($lesson->start)->format('d-m-Y H:i') }}</td>
+                                            <td class="px-4 py-2 border border-slate-200">{{ Carbon\Carbon::parse($lesson->end)->format('d-m-Y H:i') }}</td>
                                             <td class="px-4 py-2 border border-slate-200">{{ $lesson->student->name }}
                                             </td>
                                         </tr>

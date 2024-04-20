@@ -29,7 +29,7 @@ class EventController extends Controller
         $old_events = Event::where('start', '<', $start)
             ->where('user_id', auth()->user()->id)
             ->orderBy('start', 'asc')
-            ->paginate(1);
+            ->paginate(10);
         
         return view('events.index', [
             'events' => $events,

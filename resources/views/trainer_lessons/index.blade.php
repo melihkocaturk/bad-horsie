@@ -24,6 +24,9 @@
                                         </th>
                                         <th class="px-4 py-2 bg-slate-100 border border-slate-300">{{ __('Student') }}
                                         </th>
+                                        <th class="px-4 py-2 bg-slate-100 border border-slate-300">
+                                            {{ __('Confirmation') }}
+                                        </th>
                                     </tr>
                                 </thead>
 
@@ -39,7 +42,22 @@
                                                 {{ Carbon\Carbon::parse($lesson->start)->format('d-m-Y H:i') }}</td>
                                             <td class="px-4 py-2 border border-slate-200">
                                                 {{ Carbon\Carbon::parse($lesson->end)->format('d-m-Y H:i') }}</td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $lesson->student->name }}
+                                            <td class="px-4 py-2 border border-slate-200">
+                                                <span class="float-left">{{ $lesson->student->name }} &nbsp;</span>
+                                                @if ($lesson->student_confirmation)
+                                                    <x-approve-icon></x-approve-icon>
+                                                @endif
+                                            </td>
+                                            <td class="px-4 py-2 border border-slate-200">
+                                                @if (isset($lesson->trainer_confirmation))
+                                                    <div class="flex justify-center items-center">
+                                                        @if ($lesson->trainer_confirmation)
+                                                            <x-approve-icon></x-approve-icon>
+                                                        @else
+                                                            <x-reject-icon></x-reject-icon>
+                                                        @endif
+                                                    </div>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach
@@ -71,6 +89,9 @@
                                         </th>
                                         <th class="px-4 py-2 bg-slate-100 border border-slate-300">{{ __('Student') }}
                                         </th>
+                                        <th class="px-4 py-2 bg-slate-100 border border-slate-300">
+                                            {{ __('Confirmation') }}
+                                        </th>
                                     </tr>
                                 </thead>
 
@@ -87,7 +108,22 @@
                                                 {{ Carbon\Carbon::parse($lesson->start)->format('d-m-Y H:i') }}</td>
                                             <td class="px-4 py-2 border border-slate-200">
                                                 {{ Carbon\Carbon::parse($lesson->end)->format('d-m-Y H:i') }}</td>
-                                            <td class="px-4 py-2 border border-slate-200">{{ $lesson->student->name }}
+                                            <td class="px-4 py-2 border border-slate-200">
+                                                <span class="float-left">{{ $lesson->student->name }} &nbsp;</span>
+                                                @if ($lesson->student_confirmation)
+                                                    <x-approve-icon></x-approve-icon>
+                                                @endif
+                                            </td>
+                                            <td class="px-4 py-2 border border-slate-200">
+                                                @if (isset($lesson->trainer_confirmation))
+                                                    <div class="flex justify-center items-center">
+                                                        @if ($lesson->trainer_confirmation)
+                                                            <x-approve-icon></x-approve-icon>
+                                                        @else
+                                                            <x-reject-icon></x-reject-icon>
+                                                        @endif
+                                                    </div>
+                                                @endif
                                             </td>
                                         </tr>
                                     @endforeach

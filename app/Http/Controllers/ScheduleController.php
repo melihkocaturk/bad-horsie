@@ -21,11 +21,13 @@ class ScheduleController extends Controller
             ->where('start', '<', $oneWeekLater)
             ->where('user_id', auth()->user()->id)
             ->orderBy('start', 'asc');
+        
+        $user_type = auth()->user()->type == 'student' ? 'student_id' : 'trainer_id';
 
         $lessons = Lesson::select('name', 'start', 'end')
             ->where('start', '>=', $start)
             ->where('start', '<', $oneWeekLater)
-            ->where('student_id', auth()->user()->id)
+            ->where($user_type, auth()->user()->id)
             ->orderBy('start', 'asc');
         
         return view('schedule.show', [

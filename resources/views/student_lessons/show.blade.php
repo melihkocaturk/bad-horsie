@@ -61,12 +61,18 @@
                                     </td>
                                 </tr>
                                 <tr class="bg-slate-100">
+                                    <td class="px-6 py-3 font-semibold">{{ __('Horse') }}:</td>
+                                    <td class="px-6 py-3">
+                                        {{ $lesson->horse ? $lesson->horse->name : '' }}
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td class="px-6 py-3 font-semibold">{{ __('Grade') }}:</td>
                                     <td class="px-6 py-3">
                                         {{ $lesson->grade }}
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr class="bg-slate-100">
                                     <td class="px-6 py-3 font-semibold">{{ __('Comment') }}:</td>
                                     <td class="px-6 py-3">
                                         {{ $lesson->comment }}
